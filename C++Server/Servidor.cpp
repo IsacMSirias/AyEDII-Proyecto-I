@@ -14,6 +14,8 @@ int main(int argc, char const *argv[]) {
     char buffer[1024] = {0};
     const char *hello = "Muy wenas para usted cliente";
 
+    const char *Pos = "Esta es la posicion en memoria F346";
+
     // Creating socket file descriptor
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
         perror("socket failed");
@@ -48,6 +50,13 @@ int main(int argc, char const *argv[]) {
     valread = read(new_socket, buffer, 1024);
     printf("%s\n", buffer);
     send(new_socket, hello, strlen(hello), 0);
+
+
+    valread = read(new_socket, buffer, 1024);
+    printf("%s\n", buffer);
+    send(new_socket, Pos, strlen(Pos), 0);
+   
+
     printf("Hello message sent\n");
     return 0;
 

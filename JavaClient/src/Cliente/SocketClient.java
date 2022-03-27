@@ -11,6 +11,8 @@ public class SocketClient  implements Runnable{
     BufferedReader input;
     PrintWriter output;
     String Mensaje = "wenas";
+    String mensajeServidr = "";
+    String Pos = "";
 
 
     public void run(){
@@ -23,12 +25,13 @@ public class SocketClient  implements Runnable{
                     new OutputStreamWriter(socket.getOutputStream())),true);
 
             output.println(Mensaje);
-            System.out.println(input.readLine());
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            
+            
+            mensajeServidr =  input.readLine();
 
-            String SaludoServidor = reader.readLine();
+            Pos = input.readLine();
 
-            input.read(CharBuffer.wrap(SaludoServidor));
+
 
 
         } catch (IOException e) {

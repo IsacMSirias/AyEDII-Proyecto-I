@@ -1,14 +1,17 @@
 package mian;
 
-import SocketClient.Client;
+import GUI.VentanaMenu;
 
 
 public class App {
     public static void main(String[] args) throws Exception {
 
-        Client client =  new Client();
 
-        client.run();
+        VentanaMenu menu = new VentanaMenu();
+        
+        //Client client =  new Client();
+
+        //client.run();
         
     }
 }

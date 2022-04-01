@@ -96,7 +96,7 @@ public class VentanaMenu implements ActionListener{
         if (e.getSource() == BotonJugar) {
             Jugador1 = Usertxtbox.getText();
             Jugador2 = Usertxtbox2.getText();
-            System.out.println("Se abre la pantalla de juego");
+            Memory memory = new Memory();
 
         }
 

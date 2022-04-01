@@ -9,8 +9,8 @@ import java.util.Random;
 public class Memory extends JFrame {
 
     //Back End
-    int rows = 6;
-    int columns = 6;
+    int rows = 5;
+    int columns = 5;
     int counter = 0;
 
     //Buttons and Labels and More!

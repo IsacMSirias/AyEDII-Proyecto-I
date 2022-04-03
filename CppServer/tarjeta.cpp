@@ -3,6 +3,7 @@
 
 
 tarjeta::tarjeta(int pos_i, int pos_j, int id, int memory){
+    
     this->pos_i = pos_i;
     this->pos_j = pos_j;
     this-> id = id;

@@ -23,7 +23,7 @@ public:
 
     void obtener_imagen(int id);
 
-    void print();
+    void print() const;
     
 
 };

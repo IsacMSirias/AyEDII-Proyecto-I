@@ -76,5 +76,10 @@ void tarjeta::obtener_imagen(int id){
         break;
     }
 
+}
+
+void tarjeta :: print() const{
+
+    std::cout<<this->id<<" "<<this->imgprovisional<<" "<<this->memory<<std::endl;
 
 }

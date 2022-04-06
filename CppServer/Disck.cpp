@@ -6,72 +6,68 @@
 
 using namespace std;
 
-fstream archDisc;
+fstream archDisck;
 
-struct tarjetaTemp
+struct Tarjeta
 {
-    int i, j, id, memory;
+    int i, j, id, status;
 };
 
 
-void Disck::cargarDisco(){
-    int ntarj = 1;
+void Disck::crear_Disco(){
+    int n = 1;
     for (int i = 1; i <= 6; i++){
-        for (int j = 1; j<=5; j++){
-            if (ntarj > 3){
-                ntarj = 1;
-                set_tarjeta_enDisco(i,j,ntarj,0);
-                ntarj+=1;
+        for (int j = 1; j<=6; j++){
+            if (n > 10){
+                n = 1;
+                set_tarjeta_enDisco(i,j,n,0);
+                n+=1;
             }else{
-                set_tarjeta_enDisco(i,j,ntarj,0);
-                ntarj+=1;
-            } 
+                set_tarjeta_enDisco(i,j,n,0);
+                n+=1;
+            }
         }
-    }  
+    }
+}
+tarjeta Disck::get_tarjeta_enDisco(int i, int j){
+ 
+    archDisck.open("disck.txt", ios::in | ios::out | ios::binary);
+
+       
+        archDisck.seekg((i-1)*(4)*sizeof(Tarjeta)+(j-1)*sizeof(Tarjeta), ios::beg);
+        char *buffer = (char*) malloc(sizeof(Tarjeta));
+        archDisck.read(buffer, sizeof(Tarjeta));
+
+        Tarjeta* tarj = (Tarjeta*) buffer;
+        tarjeta new_tarj = tarjeta(tarj->i, tarj->j, tarj->id, tarj->status);
+        
+            new_tarj.get_image(tarj->id);
+   
+            cout<<"La tarjeta en disco es : ";
+            new_tarj.print();
+            archDisck.close();
+            free(buffer);
+            buffer = NULL;
+
+            return new_tarj;
+         
 }
 
+void Disck::set_tarjeta_enDisco(int i, int j, int id, int status){
+  
+    Tarjeta tarjeta;
+    tarjeta.i = i;
+    tarjeta.j = j;
+    tarjeta.id = id;
+    tarjeta.status = status;
 
-
-
-tarjeta Disck::get_tarjeta_enDisco(int i , int j){
-
-    archDisc.open("Disck.txt", ios::in | ios::out | ios::binary);
-
-        archDisc.seekg((i-1)*(4)*sizeof(tarjetaTemp) + (j-1)*sizeof(tarjetaTemp), ios::beg);
-        char *buffer = (char*) malloc(sizeof(tarjetaTemp));
-        archDisc.read(buffer, sizeof(tarjetaTemp));
-
-                tarjetaTemp* tarjetatemp = (tarjetaTemp*) buffer;
-
-                tarjeta new_tarjeta  = tarjeta(tarjetatemp-> i, tarjetatemp->j, tarjetatemp->id, tarjetatemp->memory);
-
-                // cout<<"Estoy despues de card"<<endl;
-                new_tarjeta.obtener_imagen(tarjetatemp->id);
-                // cout<<"Estoy despues de get image"<<endl;
-                cout<<"La tarjeta que estaba en el disco es: ";
-                new_tarjeta.print();
-                archDisc.close();
-                free(buffer);
-                buffer = NULL;
-
-                return new_tarjeta;
-
-
-}
-
-void Disck::set_tarjeta_enDisco(int i, int j, int id, int memory){
-    // cout<<"Estoy en set card"<<endl;
+        archDisck.open("disck.txt", ios::in | ios::out | ios::binary);
     
-    tarjetaTemp tarj;
-    tarj.i = i;
-    tarj.j = j;
-    tarj.id = id;
-    tarj.memory = memory;
-    archDisc.open("Disck.txt", ios::in | ios::out | ios::binary);
-    //if(file.is_open()){
-        // cout<<"EStoy en setCard"<<endl;
-        archDisc.seekg(((i-1)*(4)*sizeof(tarjetaTemp)+(j-1)*sizeof(tarjetaTemp)),ios::beg);
-        archDisc.write((char*)&tarj, sizeof(tarjetaTemp));
-        archDisc.close();
+            archDisck.seekg(((i-1)*(4)*sizeof(Tarjeta)+(j-1)*sizeof(Tarjeta)),ios::beg);
+            archDisck.write((char*)&tarjeta, sizeof(Tarjeta));
+            archDisck.close();
+
+    
 
 }
+

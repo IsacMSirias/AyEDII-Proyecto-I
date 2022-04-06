@@ -1,29 +1,21 @@
-#ifndef Disck_h
-
+#ifndef PRUEBAS_DISCK_H
+#define PRUEBAS_DISCK_H
+#include <unistd.h>
+#include <cstdio>
+#include <string>
 #include <iostream>
-#include <vector>
-#include "vector"
-#include "tarjeta.h"
-#include <stdlib.h>
-#include <iostream>
-#include <arpa/inet.h>
 #include <string>
 #include <bits/stdc++.h>
+#include "tarjeta.h"
+#include "tarjeta.cpp"
 
-
-class Disck
-{
-
+class Disck {
 
 public:
-
-    void cargarDisco();
-
-    tarjeta get_tarjeta_enDisco(int i , int j);
-
-    void set_tarjeta_enDisco(int i, int j, int id, int memory);
-    
-
+    void crear_Disco();
+    tarjeta get_tarjeta_enDisco(int i, int j); 
+    void set_tarjeta_enDisco(int i, int j, int type, int status);
 };
 
-#endif 
+
+#endif //PRUEBAS_DISCK_H

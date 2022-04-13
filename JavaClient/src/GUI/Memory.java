@@ -9,8 +9,8 @@ import java.util.Random;
 public class Memory extends JFrame {
 
     //Back End
-    int rows = 5;
-    int columns = 5;
+    int rows = 7;
+    int columns = 7;
     int counter = 0;
 
     //Buttons and Labels and More!
@@ -34,25 +34,7 @@ public class Memory extends JFrame {
     public Memory()
     {
         //Math
-        Random rgen = new Random();  // Random number generator
-        int z = 1;
-        //--- Initialize the array to the ints 0-11
-        for (int i=0; i < cards.length; i++)
-        {
-            cards[i] = z;
-            if( i%2 == 1)
-            {
-                z++;
-            }
-        }
-        //--- Shuffle by exchanging each element randomly
-        for (int i=0; i < cards.length; i++)
-        {
-            int randomPosition = rgen.nextInt(cards.length);
-            int temp = cards[i];
-            cards[i] = cards[randomPosition];
-            cards[randomPosition] = temp;
-        }
+
 
         // Display a title.
         setTitle("Memory");
@@ -64,9 +46,9 @@ public class Memory extends JFrame {
         setLayout(new GridLayout(rows, columns));
 
         // Create the memPanelsAdd items buttons to the panel
-        for( int i = 0; i < rows; i++)
+        for( int i = 1; i < rows; i++)
         {
-            for (int j = 0; j < columns; j++)
+            for (int j = 1; j < columns; j++)
             {
                 buildMemPanel(i, j);
                 add(memPanel[i][j]);
@@ -118,8 +100,11 @@ public class Memory extends JFrame {
             {
                 int r = clicked.getRow();
                 int c = clicked.getColumn();
-                ImageIcon tempImg = new ImageIcon("Card" + memButtons[r][c].getImageNumber() + ".jpg");
-                imgLabel[r][c].setIcon(tempImg);
+                System.out.println(clicked.getRow()+ " ," +clicked.getColumn());
+                System.out.println(memButtons[r][c].getImageNumber());
+
+                //ImageIcon tempImg = new ImageIcon("Card" + memButtons[r][c].getImageNumber() + ".jpg");
+                //imgLabel[r][c].setIcon(tempImg);
 
                 //This fills a bunch of variables to compare later,
                 //turns off the card you pressed, and gets ready for the next flip
@@ -133,9 +118,7 @@ public class Memory extends JFrame {
                 }
                 else
                 {
-                    //If you got it right we will win if it is the last one,
-                    //or we will disable and keep revealed for future play
-                    //If you get it right, we reset the pictures and we re-enable any buttons that were disabled
+
                     if (compareCards == memButtons[r][c].getImageNumber())
                     {
                         win++;
@@ -143,9 +126,8 @@ public class Memory extends JFrame {
                         {
                             JOptionPane.showMessageDialog(null, "You win, time to start over!");
                             win = 0;
-                            //Messy, but it gets the job done
-                            setVisible(false); //you can't see me!
-                            dispose(); //Destroy the JFrame object
+                            setVisible(false);
+                            dispose();
                             new Memory();
                         }
                         else
@@ -161,9 +143,9 @@ public class Memory extends JFrame {
                     {
                         JOptionPane.showMessageDialog(null, "Gah! No good!");
                         memButtons[holdCardRow][holdCardColumn].setEnabled(true);
-                        tempImg = new ImageIcon("Card0.jpg");
-                        imgLabel[holdCardRow][holdCardColumn].setIcon(tempImg);
-                        imgLabel[r][c].setIcon(tempImg);
+                       // tempImg = new ImageIcon("Card0.jpg");
+                       // imgLabel[holdCardRow][holdCardColumn].setIcon(tempImg);
+                       // imgLabel[r][c].setIcon(tempImg);
                     }
                     isFirst = true;
                 }
@@ -206,5 +188,5 @@ public class Memory extends JFrame {
             return imgNum;
         }
     }
-    
+
 }

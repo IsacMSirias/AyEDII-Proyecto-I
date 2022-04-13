@@ -6,15 +6,18 @@
 #include <iostream>
 #include <string>
 #include <bits/stdc++.h>
-#include "tarjeta.h"
-#include "tarjeta.cpp"
+#include "Tarjeta.h"
+
+
+
 
 class Disck {
 
 public:
+    Disck();
     void crear_Disco();
-    tarjeta get_tarjeta_enDisco(int i, int j); 
-    void set_tarjeta_enDisco(int i, int j, int type, int status);
+    Tarjeta get_tarjeta_enDisco(int i, int j);
+    void set_tarjeta_enDisco(int i, int j, int id, int status);
 };
 
 

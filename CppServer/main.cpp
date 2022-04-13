@@ -1,16 +1,16 @@
-#include "Disck.h"
-#include "Disck.cpp"
+#include <iostream>
+
+#include "VirtualMatrix.h"
+#include "VirtualMatrix.cpp"
 
 int main(){
-    
-    Disck *disco = new Disck();
 
-    disco->crear_Disco();
-    disco->get_tarjeta_enDisco(1,4);
-    disco->get_tarjeta_enDisco(1,2);
-    disco->get_tarjeta_enDisco(1,1);
-    disco->set_tarjeta_enDisco(1,4, 5, 0);
-    disco->get_tarjeta_enDisco(1,4);
+    VirtualMatrix *matrix = new VirtualMatrix();
 
+    cout<< "............................\n";
+    matrix->buscar_enMatrix(3,5);
 
-} 
+    cout<< "............................\n";
+    matrix->buscar_enMatrix(1,6);
+
+}

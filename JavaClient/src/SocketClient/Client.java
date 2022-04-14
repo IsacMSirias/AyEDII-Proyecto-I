@@ -4,17 +4,12 @@ import java.io.*;
 import java.net.Socket;
 import java.nio.CharBuffer;
 
-import GUI.Memory;
-import GUI.Memory.FlipListener.*;
-
-import javax.swing.*;
-
 public class Client implements Runnable{
 
     String Host = "LocalHost";
     int PORT = 8080;
     BufferedReader input;
-    PrintWriter output;
+    static PrintWriter output;
     String Mensaje = "wenas \n";
 
     
@@ -22,6 +17,7 @@ public class Client implements Runnable{
     String mensajeServidr = "";
     String Pos = "";
 
+    public static int i_cliente;
 
     public void run(){
 
@@ -33,27 +29,30 @@ public class Client implements Runnable{
                     new OutputStreamWriter(socket.getOutputStream())),true);
 
 
+            while(true){
 
-            output.println(Mensaje);
+                mensajeServidr =  input.readLine();
 
+                System.out.println(mensajeServidr);
 
-            mensajeServidr =  input.readLine();
-            System.out.println(mensajeServidr);
+                Pos = input.readLine();
+                System.out.println(Pos);
 
-            output.println(Mensaje2);
-
-            Pos = input.readLine();
-            System.out.println(Pos);
-
+            }
 
 
-
+    
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
 
+    }
+
+    public static void sendPosiciones(int i,int j){
+
+        output.println(i + "," +j);
     }
     
 }

@@ -4,15 +4,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
-
+import  SocketClient.*;
 
 public class Memory extends JFrame {
 
-    public static int i;
+    public static int i = Client.i_cliente;
     public static int j;
     public static int rows = 7;
     public static int columns = 7;
     int counter = 0;
+
 
     //Buttons and Labels and More!
     public static MemoryButton[][] memButtons = new MemoryButton[rows][columns];
@@ -32,7 +33,7 @@ public class Memory extends JFrame {
      Very simple, creates a 2x6 panels in grid Layout
      */
 
-    public Memory()
+    public  Memory()
     {
         //Math
 
@@ -103,8 +104,12 @@ public class Memory extends JFrame {
                 i  = clicked.getRow();
                 j = clicked.getColumn();
 
-                System.out.println(clicked.getRow()+ " ," +clicked.getColumn());
-                System.out.println(memButtons[i][j].getImageNumber());
+              Client.sendPosiciones(i,j);
+
+
+               System.out.println(i);
+
+
 
                 //ImageIcon tempImg = new ImageIcon("Card" + memButtons[r][c].getImageNumber() + ".jpg");
                 //imgLabel[r][c].setIcon(tempImg);
@@ -152,7 +157,7 @@ public class Memory extends JFrame {
                     }
                     isFirst = true;
                 }
-            }
+            } //System.out.println(i_string);
         }
     }
 

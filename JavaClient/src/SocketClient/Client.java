@@ -4,6 +4,11 @@ import java.io.*;
 import java.net.Socket;
 import java.nio.CharBuffer;
 
+import GUI.Memory;
+import GUI.Memory.FlipListener.*;
+
+import javax.swing.*;
+
 public class Client implements Runnable{
 
     String Host = "LocalHost";
@@ -30,19 +35,19 @@ public class Client implements Runnable{
 
 
             output.println(Mensaje);
-            
+
+
+            mensajeServidr =  input.readLine();
+            System.out.println(mensajeServidr);
 
             output.println(Mensaje2);
-            
-            
-            mensajeServidr =  input.readLine();
-
-            System.out.println(mensajeServidr);
 
             Pos = input.readLine();
             System.out.println(Pos);
 
-    
+
+
+
 
         } catch (IOException e) {
             e.printStackTrace();

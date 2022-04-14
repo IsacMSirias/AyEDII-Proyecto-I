@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import SocketClient.Client;
 
 public class VentanaMenu implements ActionListener{
 
@@ -94,9 +94,12 @@ public class VentanaMenu implements ActionListener{
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == BotonJugar) {
+
             Jugador1 = Usertxtbox.getText();
             Jugador2 = Usertxtbox2.getText();
             Memory memory = new Memory();
+            Client client =  new Client();
+            new Thread(client).start();
 
         }
 

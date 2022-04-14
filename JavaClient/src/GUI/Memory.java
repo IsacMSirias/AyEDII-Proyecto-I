@@ -8,15 +8,16 @@ import java.util.Random;
 
 public class Memory extends JFrame {
 
-    //Back End
-    int rows = 7;
-    int columns = 7;
+    public static int i;
+    public static int j;
+    public static int rows = 7;
+    public static int columns = 7;
     int counter = 0;
 
     //Buttons and Labels and More!
-    private MemoryButton[][] memButtons = new MemoryButton[rows][columns];
-    private JLabel[][] imgLabel = new JLabel[rows][columns];
-    private JPanel[][] memPanel = new JPanel[rows][columns];
+    public static MemoryButton[][] memButtons = new MemoryButton[rows][columns];
+    public static JLabel[][] imgLabel = new JLabel[rows][columns];
+    private static JPanel[][] memPanel = new JPanel[rows][columns];
 
     //Math Stuff
     int[] cards = new int[columns*rows];
@@ -64,7 +65,7 @@ public class Memory extends JFrame {
      The buildMemPanel method builds the grid for the game Memory
      */
 
-    private void buildMemPanel(int _i, int _j)
+    public void buildMemPanel(int _i, int _j)
     {
         //New Panel
         memPanel[_i][_j] = new JPanel();
@@ -78,7 +79,7 @@ public class Memory extends JFrame {
 
         //Add an actionListener
         memButtons[_i][_j].addActionListener(new FlipListener());
-        memButtons[_i][_j].setText("Flip!");
+        memButtons[_i][_j].setText("xd");
 
         //Create the Images
         imgLabel[_i][_j] = new JLabel( new ImageIcon("Card" + 0 + ".jpg"));
@@ -91,17 +92,19 @@ public class Memory extends JFrame {
         memPanel[_i][_j].add(memButtons[_i][_j]);
     }
 
-    private class FlipListener implements ActionListener
+    public class FlipListener implements ActionListener
     {
+
         public void actionPerformed(ActionEvent e)
         {
             Object obj = e.getSource();
-            if(obj instanceof MemoryButton clicked)
+            if(obj instanceof  MemoryButton clicked)
             {
-                int r = clicked.getRow();
-                int c = clicked.getColumn();
+                i  = clicked.getRow();
+                j = clicked.getColumn();
+
                 System.out.println(clicked.getRow()+ " ," +clicked.getColumn());
-                System.out.println(memButtons[r][c].getImageNumber());
+                System.out.println(memButtons[i][j].getImageNumber());
 
                 //ImageIcon tempImg = new ImageIcon("Card" + memButtons[r][c].getImageNumber() + ".jpg");
                 //imgLabel[r][c].setIcon(tempImg);
@@ -110,16 +113,16 @@ public class Memory extends JFrame {
                 //turns off the card you pressed, and gets ready for the next flip
                 if( isFirst)
                 {
-                    compareCards = memButtons[r][c].getImageNumber();
-                    holdCardRow = memButtons[r][c].getRow();
-                    holdCardColumn = memButtons[r][c].getColumn();
+                    compareCards = memButtons[i][j].getImageNumber();
+                    holdCardRow = memButtons[i][j].getRow();
+                    holdCardColumn = memButtons[i][j].getColumn();
                     memButtons[holdCardRow][holdCardColumn].setEnabled(false);
                     isFirst = false;
                 }
                 else
                 {
 
-                    if (compareCards == memButtons[r][c].getImageNumber())
+                    if (compareCards == memButtons[i][j].getImageNumber())
                     {
                         win++;
                         if (win == columns)
@@ -134,9 +137,9 @@ public class Memory extends JFrame {
                         {
                             JOptionPane.showMessageDialog(null, "You got one!");
                             memButtons[holdCardRow][holdCardColumn].correct = true;
-                            memButtons[r][c].correct = true;
+                            memButtons[i][j].correct = true;
                             memButtons[holdCardRow][holdCardColumn].setEnabled(false);
-                            memButtons[r][c].setEnabled(false);
+                            memButtons[i][j].setEnabled(false);
                         }
                     }
                     else
@@ -158,10 +161,10 @@ public class Memory extends JFrame {
      and what img is should display
      */
 
-    static class MemoryButton extends JButton
+    public static class MemoryButton extends JButton
     {
-        private int x;
-        private int y;
+        public int x;
+        public int y;
         private int imgNum;
         boolean correct;
 

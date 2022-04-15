@@ -1,3 +1,4 @@
+
 #ifndef PRUEBAMATRIX_VIRTUALMATRIX_H
 #define PRUEBAMATRIX_VIRTUALMATRIX_H
 #include <iostream>
@@ -5,6 +6,8 @@
 #include <vector>
 #include <fstream>
 #include "Tarjeta.h"
+#include "Disck.h"
+#include "Disck.cpp"
 using namespace std;
 using std::fstream;
 using std::ofstream;

@@ -8,6 +8,8 @@ using namespace std;
 
 fstream archDisck;
 
+
+
 Disck::Disck(){
 
     crear_Disco();
@@ -27,16 +29,20 @@ Tarjeta Disck::get_tarjeta_enDisco(int i, int j){
     archDisck.read(buffer, sizeof(Tarjeta));
 
     Tarjeta* tarj = (Tarjeta*) buffer;
-    Tarjeta new_tarj = Tarjeta();
+
+    Tarjeta tarjeta = *tarj;
+
+
+    cout<< "............................\n";
 
     cout<<"La tarjeta en disco es : ";
 
-    cout << tarj->i <<","<< tarj->j <<" "<<","<< tarj->image<<  endl;
-    archDisck.close();
+    cout << tarj->i <<","<< tarj->j <<" "<<","<<tarj->image<<   endl;
+    //archDisck.close();
     free(buffer);
     buffer = nullptr;
 
-    return new_tarj;
+    return tarjeta;
 
 }
 

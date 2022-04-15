@@ -85,6 +85,8 @@ public class VentanaMenu implements ActionListener{
 
     }
 
+
+
     /**
      * Metodo que hace que los botones de la pantalla principal sean funcionales.
      * @param e Corresponde a la escucha de los drivers del clickeo del mouse.

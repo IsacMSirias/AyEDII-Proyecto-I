@@ -35,13 +35,8 @@ public class Client implements Runnable{
 
                 System.out.println(mensajeServidr);
 
-                Pos = input.readLine();
-                System.out.println(Pos);
 
             }
-
-
-    
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -52,7 +47,9 @@ public class Client implements Runnable{
 
     public static void sendPosiciones(int i,int j){
 
-        output.println(i + "," +j);
+        output.println(i);
+        output.println(j);
+
     }
     
 }

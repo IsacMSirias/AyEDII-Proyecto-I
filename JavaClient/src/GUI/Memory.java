@@ -10,8 +10,8 @@ public class Memory extends JFrame {
 
     public static int i = Client.i_cliente;
     public static int j;
-    public static int rows = 7;
-    public static int columns = 7;
+    public static int rows = 6;
+    public static int columns = 6;
     int counter = 0;
 
 
@@ -48,9 +48,9 @@ public class Memory extends JFrame {
         setLayout(new GridLayout(rows, columns));
 
         // Create the memPanelsAdd items buttons to the panel
-        for( int i = 1; i < rows; i++)
+        for( int i = 0; i < rows; i++)
         {
-            for (int j = 1; j < columns; j++)
+            for (int j = 0; j < columns; j++)
             {
                 buildMemPanel(i, j);
                 add(memPanel[i][j]);
@@ -107,7 +107,7 @@ public class Memory extends JFrame {
               Client.sendPosiciones(i,j);
 
 
-               System.out.println(i);
+               //System.out.println(i);
 
 
 
@@ -132,7 +132,7 @@ public class Memory extends JFrame {
                         win++;
                         if (win == columns)
                         {
-                            JOptionPane.showMessageDialog(null, "You win, time to start over!");
+                          //  JOptionPane.showMessageDialog(null, "You win, time to start over!");
                             win = 0;
                             setVisible(false);
                             dispose();
@@ -140,7 +140,7 @@ public class Memory extends JFrame {
                         }
                         else
                         {
-                            JOptionPane.showMessageDialog(null, "You got one!");
+                           // JOptionPane.showMessageDialog(null, "You got one!");
                             memButtons[holdCardRow][holdCardColumn].correct = true;
                             memButtons[i][j].correct = true;
                             memButtons[holdCardRow][holdCardColumn].setEnabled(false);
@@ -149,7 +149,7 @@ public class Memory extends JFrame {
                     }
                     else
                     {
-                        JOptionPane.showMessageDialog(null, "Gah! No good!");
+                        //JOptionPane.showMessageDialog(null, "Gah! No good!");
                         memButtons[holdCardRow][holdCardColumn].setEnabled(true);
                        // tempImg = new ImageIcon("Card0.jpg");
                        // imgLabel[holdCardRow][holdCardColumn].setIcon(tempImg);

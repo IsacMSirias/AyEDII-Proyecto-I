@@ -49,9 +49,9 @@ vector <const char*> VirtualMatrix::s_Tarjetas() {
 
     while (!Tarjetas.empty())
     {
-        size_t rand_index = rand()%Tarjetas.size();
-        shuffle_Tarjetas.push_back(Tarjetas[rand_index]);
-        Tarjetas.erase(Tarjetas.begin() + rand_index);
+        size_t rand_i = rand()%Tarjetas.size();
+        shuffle_Tarjetas.push_back(Tarjetas[rand_i]);
+        Tarjetas.erase(Tarjetas.begin() + rand_i);
     }
 
     return shuffle_Tarjetas;
@@ -67,6 +67,7 @@ void VirtualMatrix::s_Matrix() {
         size_t new_j = rand()%cols;
 
             enMatrix.push_back(check_Disco(new_i, new_j));
+        
 
             cout << enMatrix[i].i <<","<< enMatrix[i].j <<" "<< enMatrix[i].image << endl;
     }
@@ -85,8 +86,8 @@ Tarjeta VirtualMatrix::buscar_enMatrix(int i, int j) {
 
                 cout<< "............................\n";
 
-                cout<<"La tarjeta en matrix es"<< endl;
-                cout << enMatrix[n].i <<","<< enMatrix[n].j <<" "<< enMatrix[n].image << endl;
+                //cout<<"La tarjeta en matrix es"<< endl;
+                //cout << enMatrix[n].i <<","<< enMatrix[n].j <<" "<< enMatrix[n].image << endl;
 
                 return enMatrix[n];
 

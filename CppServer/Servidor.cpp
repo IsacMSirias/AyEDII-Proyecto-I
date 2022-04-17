@@ -11,12 +11,15 @@
 
 #define PORT 8080
 int main(int argc, char const *argv[]) {
-    int server_fd, new_socket, pos_i, pos_j;
+    int server_fd, new_socket;
     struct sockaddr_in address{};
     int opt = 1;
     int addrlen = sizeof(address);
     char buffer1[1024] = {0};
     char buffer2[1024] = {0};
+     char buffer3[1024] = {0};
+    char buffer4[1024] = {0};
+
 
     // Creating socket file descriptor
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
@@ -65,15 +68,29 @@ int main(int argc, char const *argv[]) {
 
             read(new_socket, buffer1, 1024);
             read(new_socket, buffer2, 1024);
+            read(new_socket, buffer3, 1024);
+            read(new_socket, buffer4, 1024);
 
             int i = stoi(buffer1);
             int j = stoi(buffer2);
 
-            cout<<"-----------------------\n";
-            cout<<"lo que escribe el usuario: "<< i <<","<<j<<"\n";
-            cout<<"-----------------------\n";
+            int i2 = stoi(buffer3);
+            int j2 = stoi(buffer4);
 
-            matrix->buscar_enMatrix(i,j);
+            //cout << "primera carta: "<< i << "," <<j<< endl;
+            //cout << "primera carta: "<< i2 << "," <<j2<< endl;
+
+
+            Tarjeta tar1 = matrix->buscar_enMatrix(i,j);
+            Tarjeta tar2 =matrix->buscar_enMatrix(i2,j2);
+
+
+            if(tar1.image == tar2.image){
+
+                cout<<"match"<<endl;
+                matrix->enMatrix.push_back(tar1)
+            }
+
 
         }
 

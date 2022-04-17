@@ -12,20 +12,9 @@ int main(){
 
     matrix->s_Matrix();
     cout<< "............................\n";
-    matrix->buscar_enMatrix(2,2);
+    matrix->buscar_enMatrix(2,6);
     cout<< "............................\n";
     matrix->buscar_enMatrix(1,4);
-
-
-   // cout << disck ->get_tarjeta_enDisco(1,6).image <<"\n";
-    //cout<< "............................\n";
-   // matrix->buscar_enMatrix(1,6);
-
-
-
-
-
-
 
 
 

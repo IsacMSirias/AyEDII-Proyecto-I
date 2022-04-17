@@ -45,10 +45,12 @@ public class Client implements Runnable{
 
     }
 
-    public static void sendPosiciones(int i,int j){
+    public static void sendPosiciones(int i,int j, int i2, int j2){
 
         output.println(i);
         output.println(j);
+        output.println(i2);
+        output.println(j2);
 
     }
     

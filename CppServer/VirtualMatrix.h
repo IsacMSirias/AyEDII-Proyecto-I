@@ -23,10 +23,11 @@ class VirtualMatrix {
     int Hit = 0;
     int Fault = 0;
     int TarjTotales = rows*cols;
-    vector <Tarjeta> enMatrix;
+    
 
 
 public:
+    vector <Tarjeta> enMatrix;
     fstream archDisck;
     VirtualMatrix();
     void crear_Disco();

@@ -13,8 +13,6 @@
 
 class Disck {
 
-
-
 public:
     Disck();
     void crear_Disco();

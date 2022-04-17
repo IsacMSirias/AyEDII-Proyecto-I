@@ -1,8 +1,9 @@
 #include "VirtualMatrix.h"
-
+#include "Disck.h"
+#include "Disck.cpp"
 VirtualMatrix::VirtualMatrix() {
     crear_Matrix(rows, cols);
-
+    s_Matrix();
 }
 
 void VirtualMatrix::crear_Disco() {
@@ -41,9 +42,9 @@ vector <const char*> VirtualMatrix::s_Tarjetas() {
     vector <const char*> Tarjetas = {"N1","N2","N3","N4","N5","N6",
                                      "N7","N8","N9","N10","N11","N12",
                                      "N1","N2","N3","N4","N5","N6",
-                                     "N7","N8","N9","N10","N11","N12",
+                                     "N7","N8","N9","10N","N11","N12",
                                      "N1","N2","N3","N4","N5","N6",
-                                     "N1","N2", "N3", "N4", "N5", "N6"};
+                                     "N7","N8", "N9", "N10", "N11", "N12"};
 
     vector <const char*> shuffle_Tarjetas;
 
@@ -60,7 +61,6 @@ vector <const char*> VirtualMatrix::s_Tarjetas() {
 void VirtualMatrix::s_Matrix() {
 
     enMatrix.clear();
-    srand(time(0));
     for (int i = 0; i < TarjTotales/3; i++)
     {
         size_t new_i = rand()%rows;
@@ -75,10 +75,10 @@ void VirtualMatrix::s_Matrix() {
 Tarjeta VirtualMatrix::buscar_enMatrix(int i, int j) {
 
     Disck disck;
-    for (size_t n = 0; n < enMatrix.size(); n++){
-        if (enMatrix[n].i == i)
+    for (auto & ntarjs : enMatrix){
+        if (ntarjs.i == i)
         {
-            if (enMatrix[n].j == j)
+            if (ntarjs.j == j)
             {
                 Hit +=1;
                 cout << "pageHits: "<< Hit << endl;
@@ -86,9 +86,9 @@ Tarjeta VirtualMatrix::buscar_enMatrix(int i, int j) {
                 cout<< "............................\n";
 
                 cout<<"La tarjeta en matrix es"<< endl;
-                cout << enMatrix[n].i <<","<< enMatrix[n].j <<" "<< enMatrix[n].image << endl;
+                cout << enMatrix[i].i <<","<< enMatrix[i].j <<" "<< enMatrix[i].image << endl;
 
-                return enMatrix[n];
+                return enMatrix[i];
 
             }
         }

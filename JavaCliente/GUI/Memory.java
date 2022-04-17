@@ -3,7 +3,6 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Random;
 import  SocketClient.*;
 
 public class Memory extends JFrame {

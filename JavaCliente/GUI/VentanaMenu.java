@@ -99,7 +99,7 @@ public class VentanaMenu implements ActionListener{
 
             Jugador1 = Usertxtbox.getText();
             Jugador2 = Usertxtbox2.getText();
-            Memory memory = new Memory();
+            new Memory();
             Client client =  new Client();
             new Thread(client).start();
 

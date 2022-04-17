@@ -72,5 +72,8 @@
     "**/.*/**",
     "**/.vscode",
     "**/.vscode/**"
+  ],
+  "java.project.sourcePaths": [
+    "JavaCliente"
   ]
 }

@@ -1,3 +1,0 @@
-/home/ims/Documentos/GitHub/AyEDII-Proyecto-I/CppServer/cmake-build-debug/CMakeFiles/CppServer.dir
-/home/ims/Documentos/GitHub/AyEDII-Proyecto-I/CppServer/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/ims/Documentos/GitHub/AyEDII-Proyecto-I/CppServer/cmake-build-debug/CMakeFiles/rebuild_cache.dir

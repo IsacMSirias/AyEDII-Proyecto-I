@@ -60,17 +60,24 @@ vector <const char*> VirtualMatrix::s_Tarjetas() {
 void VirtualMatrix::s_Matrix() {
 
     enMatrix.clear();
-    srand(time(0));
+    //srand(time(0));
     for (int i = 0; i < TarjTotales/3; i++)
     {
         size_t new_i = rand()%rows;
         size_t new_j = rand()%cols;
 
             enMatrix.push_back(check_Disco(new_i, new_j));
-        
-
-            cout << enMatrix[i].i <<","<< enMatrix[i].j <<" "<< enMatrix[i].image << endl;
     }
+    //print_matrix();
+}
+
+void VirtualMatrix::print_matrix(){
+
+    int limit = this->enMatrix.size();
+    for(int n = 0; n < limit ; n++){
+        this->enMatrix[n].print_Tarjeta();
+    }
+
 }
 
 Tarjeta VirtualMatrix::buscar_enMatrix(int i, int j) {
@@ -108,3 +115,38 @@ Tarjeta VirtualMatrix::check_Disco(int i, int j) {
 
     return tarjeta;
 }
+
+Tarjeta VirtualMatrix :: reemplazar(int i, int j){
+
+    Disck disck;
+
+    srand(time(0));
+
+    if (this-> enMatrix.size() > 0){
+
+        int ntar = rand()%this->enMatrix.size();
+
+        cout<< "Se elimino la posicion "<<ntar<<"  del vector"<< endl;
+        cout <<"el objeto eliminado fue "<<endl;
+        cout << enMatrix[ntar].i <<", "<< enMatrix[ntar].j<< "   " <<enMatrix[ntar].image<< endl;
+
+        int temp_i = this->enMatrix[ntar].i;
+        int temp_j = this->enMatrix[ntar].j;
+        const char* temp_image = this-> enMatrix[ntar].image;
+
+        disck.set_tarjeta_enDisco(temp_i, temp_j, temp_image);
+
+        this->enMatrix.erase(this->enMatrix.begin()+ntar);
+
+    }
+
+    Tarjeta tarjeta = disck.get_tarjeta_enDisco(i,j);
+    this->enMatrix.push_back(tarjeta);
+
+    cout <<"La nueva tarjeta en la matrix es"<<endl;
+
+    tarjeta.print_Tarjeta();
+
+    return tarjeta;
+}
+

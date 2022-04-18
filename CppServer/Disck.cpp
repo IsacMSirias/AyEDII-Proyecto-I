@@ -46,12 +46,12 @@ Tarjeta Disck::get_tarjeta_enDisco(int i, int j){
 
 }
 
-void Disck::set_tarjeta_enDisco(int i, int j, int id, int status){
+void Disck::set_tarjeta_enDisco(int i, int j, const char* image){
 
     Tarjeta tarjeta;
     tarjeta.i = i;
     tarjeta.j = j;
-
+    tarjeta.image = image;
 
     archDisck.open("disco", ios::in | ios::out | ios::binary);
 

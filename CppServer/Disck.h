@@ -19,7 +19,7 @@ public:
     Disck();
     void crear_Disco();
     Tarjeta get_tarjeta_enDisco(int i, int j);
-    void set_tarjeta_enDisco(int i, int j, int id, int status);
+    void set_tarjeta_enDisco(int i, int j, const char* image);
 };
 
 

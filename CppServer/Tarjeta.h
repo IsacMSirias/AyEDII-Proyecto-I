@@ -7,10 +7,20 @@
 
 
 struct Tarjeta {
+    
 public:
     int i, j;
     const char* image;
+
+    void print_Tarjeta(){
+
+        std::cout<<"Posicion: "<< i << "," << j << "  imagen: "<< image <<std::endl; 
+
+    };
 };
+
+
+
 
 
 #endif //PRUEBAMATRIX_TARJETA_H

@@ -19,6 +19,7 @@ int main(int argc, char const *argv[]) {
     char buffer2[1024] = {0};
      char buffer3[1024] = {0};
     char buffer4[1024] = {0};
+    bool turno = true;
 
 
     // Creating socket file descriptor
@@ -66,31 +67,75 @@ int main(int argc, char const *argv[]) {
 
         while (1){
 
-            read(new_socket, buffer1, 1024);
-            read(new_socket, buffer2, 1024);
-            read(new_socket, buffer3, 1024);
-            read(new_socket, buffer4, 1024);
+            if (turno){
 
-            int i = stoi(buffer1);
-            int j = stoi(buffer2);
+                cout<<"JUGADOR 1"<<endl;
 
-            int i2 = stoi(buffer3);
-            int j2 = stoi(buffer4);
+                read(new_socket, buffer1, 1024);
+                read(new_socket, buffer2, 1024);
+                read(new_socket, buffer3, 1024);
+                read(new_socket, buffer4, 1024);
 
-            //cout << "primera carta: "<< i << "," <<j<< endl;
-            //cout << "primera carta: "<< i2 << "," <<j2<< endl;
+                int i = stoi(buffer1);
+                int j = stoi(buffer2);
 
+                int i2 = stoi(buffer3);
+                int j2 = stoi(buffer4);
 
-            Tarjeta tar1 = matrix->buscar_enMatrix(i,j);
-            Tarjeta tar2 =matrix->buscar_enMatrix(i2,j2);
+                cout << "primera carta: "<< i << "," <<j<< endl;
+                cout << "primera carta: "<< i2 << "," <<j2<< endl;
 
+                 Tarjeta tar1 = matrix->buscar_enMatrix(i,j);
 
-            if(tar1.image == tar2.image){
+                Tarjeta tar2 =matrix->buscar_enMatrix(i2,j2);
 
+                cout<<tar1.image <<","<<tar2.image<<endl;
+
+                if(tar1.image == tar2.image){
                 cout<<"match"<<endl;
-                matrix->enMatrix.push_back(tar1)
+                }else{
+                    cout<<"No match"<<endl;
+                }
+                
+                
+            turno = false;
+
+
+            }else{
+                cout <<"JUGADOR 2"<<endl;
+
+                read(new_socket, buffer1, 1024);
+                read(new_socket, buffer2, 1024);
+                read(new_socket, buffer3, 1024);
+                read(new_socket, buffer4, 1024);
+
+                int i = stoi(buffer1);
+                int j = stoi(buffer2);
+
+                int i2 = stoi(buffer3);
+                int j2 = stoi(buffer4);
+
+                cout << "primera carta: "<< i << "," <<j<< endl;
+                cout << "primera carta: "<< i2 << "," <<j2<< endl;
+
+                 Tarjeta tar1 = matrix->buscar_enMatrix(i,j);
+
+                Tarjeta tar2 =matrix->buscar_enMatrix(i2,j2);
+
+                cout<<tar1.image <<","<<tar2.image<<endl;
+
+                if(tar1.image == tar2.image){
+                cout<<"match"<<endl;
+                }else{
+                    cout<<"No match"<<endl;
+                }
+                
+                
+            turno = true;
+
             }
 
+            
 
         }
 

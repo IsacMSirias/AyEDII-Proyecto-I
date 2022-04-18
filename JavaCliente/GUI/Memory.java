@@ -104,72 +104,49 @@ public class Memory extends JFrame {
                 j = clicked.getColumn();
 
               
-
-
-               //System.out.println(i);
-
-
-
-                //ImageIcon tempImg = new ImageIcon("Card" + memButtons[r][c].getImageNumber() + ".jpg");
-                //imgLabel[r][c].setIcon(tempImg);
-
-                //This fills a bunch of variables to compare later,
-                //turns off the card you pressed, and gets ready for the next flip
                 if( isFirst)
                 {
-                    compareCards = memButtons[i][j].getImageNumber();
+                    //compareCards = memButtons[i][j].getImageNumber();
                     holdCardRow = memButtons[i][j].getRow();
                     holdCardColumn = memButtons[i][j].getColumn();
-                    memButtons[holdCardRow][holdCardColumn].setEnabled(false);
+                    //memButtons[holdCardRow][holdCardColumn].setEnabled(false);
                     isFirst = false;
                 }
                 else
                 {
-                    //Client.sendPosiciones(holdCardRow,holdCardColumn, i,j);
-
+                   
                     System.out.println(holdCardRow +", "+ holdCardColumn);
                     System.out.println(i +", "+ j);
 
-                    Client.sendPosiciones(holdCardRow, holdCardColumn, i, j);
+                    Client.sendPosiciones(holdCardRow,holdCardColumn, i,j);
+
 
                     if (compareCards == memButtons[i][j].getImageNumber())
                     {
                         win++;
                         if (win == columns)
                         {
-                          //  JOptionPane.showMessageDialog(null, "You win, time to start over!");
-                            win = 0;
-                           // setVisible(false);
-                           // dispose();
-                           // new Memory();
+                            win = 0;   
                         }
                         else
                         {
-                           // JOptionPane.showMessageDialog(null, "You got one!");
-                            memButtons[holdCardRow][holdCardColumn].correct = true;
-                            memButtons[i][j].correct = true;
-                            memButtons[holdCardRow][holdCardColumn].setEnabled(false);
-                            memButtons[i][j].setEnabled(false);
+            
+                            //memButtons[holdCardRow][holdCardColumn].setEnabled(false);
+                           // memButtons[i][j].setEnabled(false);
                         }
                     }
                     else
                     {
-                        //JOptionPane.showMessageDialog(null, "Gah! No good!");
+             
                         memButtons[holdCardRow][holdCardColumn].setEnabled(true);
-                       // tempImg = new ImageIcon("Card0.jpg");
-                       // imgLabel[holdCardRow][holdCardColumn].setIcon(tempImg);
-                       // imgLabel[r][c].setIcon(tempImg);
+                      
                     }
                     isFirst = true;
                 }
-            } //System.out.println(i_string);
+            } 
         }
     }
 
-    /**
-     The MemoryButton knows where it is, if it correct,
-     and what img is should display
-     */
 
     public static class MemoryButton extends JButton
     {

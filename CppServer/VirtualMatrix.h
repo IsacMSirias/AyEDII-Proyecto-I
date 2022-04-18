@@ -29,14 +29,20 @@ class VirtualMatrix {
 public:
     vector <Tarjeta> enMatrix;
     fstream archDisck;
-    VirtualMatrix();
-    void crear_Disco();
+   
     void crear_Matrix(int rows, int cols);
-    void s_Matrix();
-    void print_matrix();
+    void eliminar_tarjeta(Tarjeta tarj);
+
     Tarjeta buscar_enMatrix(int i, int j);
     Tarjeta check_Disco(int i, int j);
     Tarjeta reemplazar(int i, int j);
+
+    void s_Matrix();
+    void print_matrix();
+    void crear_Disco();
+    
+    VirtualMatrix();
+
     vector <const char*> s_Tarjetas();
 };
 

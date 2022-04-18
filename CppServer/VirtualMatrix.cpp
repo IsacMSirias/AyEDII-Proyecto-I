@@ -137,6 +137,8 @@ Tarjeta VirtualMatrix :: reemplazar(int i, int j){
         disck.set_tarjeta_enDisco(temp_i, temp_j, temp_image);
 
         this->enMatrix.erase(this->enMatrix.begin()+ntar);
+        
+    
 
     }
 
@@ -149,4 +151,31 @@ Tarjeta VirtualMatrix :: reemplazar(int i, int j){
 
     return tarjeta;
 }
+
+
+void VirtualMatrix::eliminar_tarjeta(Tarjeta tar){
+
+    Disck disc;
+
+    int total_tarjs = this->enMatrix.size();
+
+    for(int n = 0; n < total_tarjs; n++){
+
+        if(enMatrix[n].i == tar.i){
+
+            if(enMatrix[n].j == tar.j){
+                
+                enMatrix.erase(enMatrix.begin()+n);
+
+            }
+        
+        }
+
+    }
+    
+    print_matrix();
+  
+}
+
+
 

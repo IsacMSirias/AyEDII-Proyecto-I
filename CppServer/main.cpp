@@ -18,9 +18,12 @@ int main(){
     //matrix->buscar_enMatrix(5,3);
      //cout<< "............................\n";
     //disck ->get_tarjeta_enDisco(5,3);
-    cout<<"el vector tiene" <<": "<<matrix->enMatrix.size()<< "  Tarjetas"<<endl;
 
-    matrix->print_matrix();
+  //  matrix-> eliminar_tarjeta(matrix->buscar_enMatrix(5,0));
+
+    //cout<<"el vector tiene" <<": "<<matrix->enMatrix.size()<< "  Tarjetas"<<endl;
+
+    //matrix->print_matrix();
 
 
  

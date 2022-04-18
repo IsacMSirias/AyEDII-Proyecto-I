@@ -15,10 +15,16 @@ int main(int argc, char const *argv[]) {
     struct sockaddr_in address{};
     int opt = 1;
     int addrlen = sizeof(address);
-    char buffer1[1024] = {0};
-    char buffer2[1024] = {0};
-     char buffer3[1024] = {0};
-    char buffer4[1024] = {0};
+
+    char pos_i [1024] = {0};
+    char pos_j[1024] = {0};
+
+    char pos_i2[1024] = {0};
+    char pos_j2[1024] = {0};
+
+    char Jugador_1[1024] = {0};
+    char Jugador_2[1024] = {0};
+
     bool turno = true;
 
 
@@ -64,23 +70,26 @@ int main(int argc, char const *argv[]) {
         }
 
 
+        read(new_socket, Jugador_1, 1024);
+        read(new_socket, Jugador_2, 1024);
 
         while (1){
 
             if (turno){
 
-                cout<<"JUGADOR 1"<<endl;
+                cout<<"JUGADOR 1: "<<Jugador_1<<endl;
 
-                read(new_socket, buffer1, 1024);
-                read(new_socket, buffer2, 1024);
-                read(new_socket, buffer3, 1024);
-                read(new_socket, buffer4, 1024);
 
-                int i = stoi(buffer1);
-                int j = stoi(buffer2);
+                read(new_socket, pos_i, 1024);
+                read(new_socket, pos_j, 1024);
+                read(new_socket, pos_i2, 1024);
+                read(new_socket, pos_j2, 1024);
 
-                int i2 = stoi(buffer3);
-                int j2 = stoi(buffer4);
+                int i = stoi(pos_i);
+                int j = stoi(pos_j);
+
+                int i2 = stoi(pos_i2);
+                int j2 = stoi(pos_j2);
 
                 cout << "primera carta: "<< i << "," <<j<< endl;
                 cout << "primera carta: "<< i2 << "," <<j2<< endl;
@@ -92,7 +101,11 @@ int main(int argc, char const *argv[]) {
                 cout<<tar1.image <<","<<tar2.image<<endl;
 
                 if(tar1.image == tar2.image){
+
                 cout<<"match"<<endl;
+                matrix->s_Matrix();
+                //Ademas reducir vector 
+
                 }else{
                     cout<<"No match"<<endl;
                 }
@@ -102,18 +115,18 @@ int main(int argc, char const *argv[]) {
 
 
             }else{
-                cout <<"JUGADOR 2"<<endl;
+                cout<<"JUGADOR 2: "<<Jugador_2<<endl;
 
-                read(new_socket, buffer1, 1024);
-                read(new_socket, buffer2, 1024);
-                read(new_socket, buffer3, 1024);
-                read(new_socket, buffer4, 1024);
+                read(new_socket, pos_i, 1024);
+                read(new_socket, pos_j, 1024);
+                read(new_socket, pos_i2, 1024);
+                read(new_socket, pos_j2, 1024);
 
-                int i = stoi(buffer1);
-                int j = stoi(buffer2);
+                int i = stoi(pos_i);
+                int j = stoi(pos_j);
 
-                int i2 = stoi(buffer3);
-                int j2 = stoi(buffer4);
+                int i2 = stoi(pos_i2);
+                int j2 = stoi(pos_j2);
 
                 cout << "primera carta: "<< i << "," <<j<< endl;
                 cout << "primera carta: "<< i2 << "," <<j2<< endl;
@@ -125,8 +138,13 @@ int main(int argc, char const *argv[]) {
                 cout<<tar1.image <<","<<tar2.image<<endl;
 
                 if(tar1.image == tar2.image){
+
                 cout<<"match"<<endl;
+                matrix->s_Matrix();
+                //Ademas, reducir vector
+
                 }else{
+
                     cout<<"No match"<<endl;
                 }
                 

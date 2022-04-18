@@ -4,24 +4,28 @@ import java.io.*;
 import java.net.Socket;
 import java.nio.CharBuffer;
 
+import GUI.VentanaMenu;
+
 public class Client implements Runnable{
 
     String Host = "LocalHost";
     int PORT = 8080;
     BufferedReader input;
     static PrintWriter output;
-    String Mensaje = "wenas \n";
+    
+
+    String nombreJugador1 = VentanaMenu.Jugador1;
+    String nombreJugador2 = VentanaMenu.Jugador2;
+
 
     
-    String Mensaje2 = "Muy wenas";
-    String mensajeServidr = "";
-    String Pos = "";
-
     public static int i_cliente;
 
     public void run(){
 
         try {
+
+            
             Socket socket = new Socket(Host, PORT);
 
             input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -29,14 +33,8 @@ public class Client implements Runnable{
                     new OutputStreamWriter(socket.getOutputStream())),true);
 
 
-            while(true){
-
-                mensajeServidr =  input.readLine();
-
-                System.out.println(mensajeServidr);
-
-
-            }
+                    output.println(nombreJugador1);
+                    output.println(nombreJugador2);
 
         } catch (IOException e) {
             e.printStackTrace();

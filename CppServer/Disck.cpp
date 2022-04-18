@@ -32,12 +32,8 @@ Tarjeta Disck::get_tarjeta_enDisco(int i, int j){
 
     Tarjeta tarjeta = *tarj;
 
-
-    //cout<< "............................\n";
-
-    //cout<<"La tarjeta en disco es : ";
-
-    //cout << tarj->i <<","<< tarj->j <<" "<<","<<tarj->image<<   endl;
+    tarjeta.print_Tarjeta();
+    
     archDisck.close();
     free(buffer);
     buffer = nullptr;

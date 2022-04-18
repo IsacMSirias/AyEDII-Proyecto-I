@@ -13,12 +13,11 @@ int main(){
     matrix->s_Matrix();
     matrix->print_matrix();
     cout<< "............................\n";
-    matrix->buscar_enMatrix(2,6);
-    cout<< "............................\n";
-    matrix->buscar_enMatrix(1,4);
-    
-    matrix->reemplazar(1,4);
-
+    //matrix->buscar_enMatrix(1,4);
+    //cout<< "............................\n";
+    //matrix->buscar_enMatrix(5,3);
+     //cout<< "............................\n";
+    //disck ->get_tarjeta_enDisco(5,3);
     cout<<"el vector tiene" <<": "<<matrix->enMatrix.size()<< "  Tarjetas"<<endl;
 
     matrix->print_matrix();

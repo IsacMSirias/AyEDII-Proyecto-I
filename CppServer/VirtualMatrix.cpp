@@ -103,7 +103,7 @@ Tarjeta VirtualMatrix::buscar_enMatrix(int i, int j) {
     }
     Fault += 1;
     cout << "pageFaults: " << Fault << endl;
-    return disck.get_tarjeta_enDisco(i, j);
+    return reemplazar(i,j);
 }
 
 Tarjeta VirtualMatrix::check_Disco(int i, int j) {

@@ -13,17 +13,18 @@ int main(){
     matrix->s_Matrix();
     matrix->print_matrix();
     cout<< "............................\n";
-    //matrix->buscar_enMatrix(1,4);
-    //cout<< "............................\n";
-    //matrix->buscar_enMatrix(5,3);
-     //cout<< "............................\n";
-    //disck ->get_tarjeta_enDisco(5,3);
+    matrix->buscar_enMatrix(5,3);
+    cout<< "............................\n";
+    matrix->buscar_enMatrix(5,3);
+    cout<< "............................\n";
+   matrix->buscar_enMatrix(5,3);
+ matrix->buscar_enMatrix(5,3);
+  matrix->buscar_enMatrix(5,3);
+   matrix->buscar_enMatrix(5,3);
 
-  //  matrix-> eliminar_tarjeta(matrix->buscar_enMatrix(5,0));
+    cout<<"el vector tiene" <<": "<<matrix->enMatrix.size()<< "  Tarjetas"<<endl;
 
-    //cout<<"el vector tiene" <<": "<<matrix->enMatrix.size()<< "  Tarjetas"<<endl;
-
-    //matrix->print_matrix();
+    matrix->print_matrix();
 
 
  

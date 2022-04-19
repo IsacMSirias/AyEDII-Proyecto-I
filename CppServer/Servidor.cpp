@@ -22,6 +22,13 @@ int main(int argc, char const *argv[]) {
     char pos_i2[1024] = {0};
     char pos_j2[1024] = {0};
 
+
+    char _pos_i [1024] = {0};
+    char _pos_j[1024] = {0};
+
+    char _pos_i2[1024] = {0};
+    char _pos_j2[1024] = {0};
+
     char Jugador_1[1024] = {0};
     char Jugador_2[1024] = {0};
 
@@ -54,8 +61,13 @@ int main(int argc, char const *argv[]) {
 
     VirtualMatrix *matrix = new VirtualMatrix();
 
-    matrix->s_Matrix();
+    cout<<"---------matrix en memoria----------"<<endl;
 
+    matrix->s_Matrix();
+    matrix->print_matrix();
+    srand(time(0));
+    int turnoran = rand()%7;
+    cout<<turnoran<<endl;
 
     while (1) {
 
@@ -73,88 +85,223 @@ int main(int argc, char const *argv[]) {
         read(new_socket, Jugador_1, 1024);
         read(new_socket, Jugador_2, 1024);
 
-        while (1){
+       
 
-            if (turno){
+       
 
-                cout<<"JUGADOR 1: "<<Jugador_1<<endl;
+        if (turnoran%2 == 0){
+             
+             while (1){
+
+                if (turno){
+
+                    cout<<"-------------------------"<<endl;
+
+                    cout<<"JUGADOR 1: "<<Jugador_2<<endl;
 
 
-                read(new_socket, pos_i, 1024);
-                read(new_socket, pos_j, 1024);
-                read(new_socket, pos_i2, 1024);
-                read(new_socket, pos_j2, 1024);
+                    read(new_socket, pos_i, 1024);
+                    read(new_socket, pos_j, 1024);
+                    read(new_socket, pos_i2, 1024);
+                    read(new_socket, pos_j2, 1024);
 
-                int i = stoi(pos_i);
-                int j = stoi(pos_j);
+                    int i = stoi(pos_i);
+                    int j = stoi(pos_j);
 
-                int i2 = stoi(pos_i2);
-                int j2 = stoi(pos_j2);
+                    int i2 = stoi(pos_i2);
+                    int j2 = stoi(pos_j2);
 
-                cout << "primera carta: "<< i << "," <<j<< endl;
-                cout << "primera carta: "<< i2 << "," <<j2<< endl;
+                    cout << "primera carta: "<< i << "," <<j<< endl;
+                    cout << "primera carta: "<< i2 << "," <<j2<< endl;
 
-                 Tarjeta tar1 = matrix->buscar_enMatrix(i,j);
+                    Tarjeta tar1 = matrix->buscar_enMatrix(i,j);
 
-                Tarjeta tar2 =matrix->buscar_enMatrix(i2,j2);
+                    Tarjeta tar2 =matrix->buscar_enMatrix(i2,j2);
 
-                cout<<tar1.image <<","<<tar2.image<<endl;
+                    cout<<"Las imagenes respectivas son: "<<tar1.image <<","<<tar2.image<<endl;
 
-                if(tar1.image == tar2.image){
+                    if(tar1.image == tar2.image){
 
-                cout<<"match"<<endl;
-                matrix->s_Matrix();
-                //Ademas reducir vector 
+                    matrix->eliminar_tarjeta(tar1);
+                    matrix->eliminar_tarjeta(tar2);
 
-                }else{
-                    cout<<"No match"<<endl;
-                }
+                    cout<<"match"<<endl;
+
+                    cout<<"----------NUEVA MATRIZ-------------"<<endl;
+                    matrix->s_Matrix();
+                    matrix->print_matrix();
+
+
+                    cout<<"-------------------------"<<endl;
+
+                    }else{
+                        cout<<"No match"<<endl;
+
+
                 
-                
-            turno = false;
+                    }
+                    
+                    
+                turno = false;
 
-
-            }else{
-                cout<<"JUGADOR 2: "<<Jugador_2<<endl;
-
-                read(new_socket, pos_i, 1024);
-                read(new_socket, pos_j, 1024);
-                read(new_socket, pos_i2, 1024);
-                read(new_socket, pos_j2, 1024);
-
-                int i = stoi(pos_i);
-                int j = stoi(pos_j);
-
-                int i2 = stoi(pos_i2);
-                int j2 = stoi(pos_j2);
-
-                cout << "primera carta: "<< i << "," <<j<< endl;
-                cout << "primera carta: "<< i2 << "," <<j2<< endl;
-
-                 Tarjeta tar1 = matrix->buscar_enMatrix(i,j);
-
-                Tarjeta tar2 =matrix->buscar_enMatrix(i2,j2);
-
-                cout<<tar1.image <<","<<tar2.image<<endl;
-
-                if(tar1.image == tar2.image){
-
-                cout<<"match"<<endl;
-                matrix->s_Matrix();
-                //Ademas, reducir vector
 
                 }else{
 
-                    cout<<"No match"<<endl;
-                }
-                
-                
-            turno = true;
+                    cout<<"-------------------------"<<endl;
+                    cout<<"JUGADOR 2: "<<Jugador_1<<endl;
 
-            }
+                    read(new_socket, _pos_i, 1024);
+                    read(new_socket, _pos_j, 1024);
+                    read(new_socket, _pos_i2, 1024);
+                    read(new_socket, _pos_j2, 1024);
+
+                    int _i = stoi(_pos_i);
+                    int _j = stoi(_pos_j);
+
+                    int _i2 = stoi(_pos_i2);
+                    int _j2 = stoi(_pos_j2);
+
+                    cout << "primera carta: "<< _i << "," <<_j<< endl;
+                    cout << "primera carta: "<< _i2 << "," <<_j2<< endl;
+
+                    Tarjeta _tar1 = matrix->buscar_enMatrix(_i,_j);
+
+                    Tarjeta _tar2 =matrix->buscar_enMatrix(_i2,_j2);
+
+                    cout<<_tar1.image <<","<<_tar2.image<<endl;
+
+                    if(_tar1.image == _tar2.image){
+
+                    matrix->eliminar_tarjeta(_tar1);
+                    matrix->eliminar_tarjeta(_tar2);
+        
+                    cout<<"match"<<endl;
+                    matrix->s_Matrix();
+                    matrix->print_matrix();
+        
+                    cout<<"-------------------------"<<endl;
+
+                    }else{
+
+                        cout<<"No match"<<endl;
+                        cout<<"-------------------------"<<endl;
+                    }
+                    
+                    
+                turno = true;
+
+                }
 
         }
 
+        }else{
+
+             while (1){
+
+                if (turno){
+
+                    cout<<"-------------------------"<<endl;
+
+                    cout<<"JUGADOR 1: "<<Jugador_1<<endl;
+
+
+                    read(new_socket, pos_i, 1024);
+                    read(new_socket, pos_j, 1024);
+                    read(new_socket, pos_i2, 1024);
+                    read(new_socket, pos_j2, 1024);
+
+                    int i = stoi(pos_i);
+                    int j = stoi(pos_j);
+
+                    int i2 = stoi(pos_i2);
+                    int j2 = stoi(pos_j2);
+
+                    cout << "primera carta: "<< i << "," <<j<< endl;
+                    cout << "primera carta: "<< i2 << "," <<j2<< endl;
+
+                    Tarjeta tar1 = matrix->buscar_enMatrix(i,j);
+
+                    Tarjeta tar2 =matrix->buscar_enMatrix(i2,j2);
+
+                    cout<<"Las imagenes respectivas son: "<<tar1.image <<","<<tar2.image<<endl;
+
+                    if(tar1.image == tar2.image){
+
+                    matrix->eliminar_tarjeta(tar1);
+                    matrix->eliminar_tarjeta(tar2);
+
+                    cout<<"match"<<endl;
+
+                    cout<<"----------NUEVA MATRIZ-------------"<<endl;
+                    matrix->s_Matrix();
+                    matrix->print_matrix();
+
+
+                    cout<<"-------------------------"<<endl;
+
+                    }else{
+                        cout<<"No match"<<endl;
+
+
+                
+                    }
+                    
+                    
+                turno = false;
+
+
+                }else{
+
+                    cout<<"-------------------------"<<endl;
+                    cout<<"JUGADOR 2: "<<Jugador_2<<endl;
+
+                    read(new_socket, _pos_i, 1024);
+                    read(new_socket, _pos_j, 1024);
+                    read(new_socket, _pos_i2, 1024);
+                    read(new_socket, _pos_j2, 1024);
+
+                    int _i = stoi(_pos_i);
+                    int _j = stoi(_pos_j);
+
+                    int _i2 = stoi(_pos_i2);
+                    int _j2 = stoi(_pos_j2);
+
+                    cout << "primera carta: "<< _i << "," <<_j<< endl;
+                    cout << "primera carta: "<< _i2 << "," <<_j2<< endl;
+
+                    Tarjeta _tar1 = matrix->buscar_enMatrix(_i,_j);
+
+                    Tarjeta _tar2 =matrix->buscar_enMatrix(_i2,_j2);
+
+                    cout<<_tar1.image <<","<<_tar2.image<<endl;
+
+                    if(_tar1.image == _tar2.image){
+
+                    matrix->eliminar_tarjeta(_tar1);
+                    matrix->eliminar_tarjeta(_tar2);
+        
+                    cout<<"match"<<endl;
+                    matrix->s_Matrix();
+                    matrix->print_matrix();
+        
+                    cout<<"-------------------------"<<endl;
+
+                    }else{
+
+                        cout<<"No match"<<endl;
+                        cout<<"-------------------------"<<endl;
+                    }
+                    
+                    
+                turno = true;
+
+                }
+
+        }
+
+        }       
+
+       
     }
 
 }

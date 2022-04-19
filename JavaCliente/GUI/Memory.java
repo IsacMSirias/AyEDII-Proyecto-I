@@ -9,8 +9,8 @@ public class Memory extends JFrame {
 
     public static int i = Client.i_cliente;
     public static int j;
-    public static int rows = 7;
-    public static int columns = 7;
+    public static int rows = 6;
+    public static int columns = 6;
     int counter = 0;
 
 
@@ -47,9 +47,9 @@ public class Memory extends JFrame {
         setLayout(new GridLayout(rows, columns));
 
         // Create the memPanelsAdd items buttons to the panel
-        for( int i = 1; i < rows; i++)
+        for( int i = 0; i < rows; i++)
         {
-            for (int j = 1; j < columns; j++)
+            for (int j = 0; j < columns; j++)
             {
                 buildMemPanel(i, j);
                 add(memPanel[i][j]);

@@ -39,11 +39,11 @@ void VirtualMatrix::crear_Matrix(int rows, int cols) {
 
 vector <const char*> VirtualMatrix::s_Tarjetas() {
     vector <const char*> Tarjetas = {"N1","N2","N3","N4","N5","N6",
-                                     "N7","N8","N9","N10","N11","N12",
-                                     "N1","N2","N3","N4","N5","N6",
-                                     "N7","N8","N9","N10","N11","N12",
-                                     "N1","N2","N3","N4","N5","N6",
-                                     "N1","N2", "N3", "N4", "N5", "N6"};
+                                    "N1","N2","N3","N4","N5","N6",
+                                    "N1","N2","N3","N4","N5","N6",
+                                    "N1","N2","N3","N4","N5","N6",
+                                    "N1","N2","N3","N4","N5","N6",
+                                    "N1","N2","N3","N4","N5","N6"};
 
     vector <const char*> shuffle_Tarjetas;
 
@@ -60,7 +60,7 @@ vector <const char*> VirtualMatrix::s_Tarjetas() {
 void VirtualMatrix::s_Matrix() {
 
     enMatrix.clear();
-    //srand(time(0));
+    srand(time(0));
     for (int i = 0; i < TarjTotales/3; i++)
     {
         size_t new_i = rand()%rows;
@@ -91,11 +91,6 @@ Tarjeta VirtualMatrix::buscar_enMatrix(int i, int j) {
                 Hit +=1;
                 cout << "pageHits: "<< Hit << endl;
 
-                cout<< "............................\n";
-
-                //cout<<"La tarjeta en matrix es"<< endl;
-                //cout << enMatrix[n].i <<","<< enMatrix[n].j <<" "<< enMatrix[n].image << endl;
-
                 return enMatrix[n];
 
             }
@@ -103,7 +98,7 @@ Tarjeta VirtualMatrix::buscar_enMatrix(int i, int j) {
     }
     Fault += 1;
     cout << "pageFaults: " << Fault << endl;
-    return reemplazar(i,j);
+    return disck.get_tarjeta_enDisco(i,j);
 }
 
 Tarjeta VirtualMatrix::check_Disco(int i, int j) {
@@ -126,10 +121,6 @@ Tarjeta VirtualMatrix :: reemplazar(int i, int j){
 
         int ntar = rand()%this->enMatrix.size();
 
-        cout<< "Se elimino la posicion "<<ntar<<"  del vector"<< endl;
-        cout <<"el objeto eliminado fue "<<endl;
-        cout << enMatrix[ntar].i <<", "<< enMatrix[ntar].j<< "   " <<enMatrix[ntar].image<< endl;
-
         int temp_i = this->enMatrix[ntar].i;
         int temp_j = this->enMatrix[ntar].j;
         const char* temp_image = this-> enMatrix[ntar].image;
@@ -138,16 +129,11 @@ Tarjeta VirtualMatrix :: reemplazar(int i, int j){
 
         this->enMatrix.erase(this->enMatrix.begin()+ntar);
         
-    
 
     }
 
     Tarjeta tarjeta = disck.get_tarjeta_enDisco(i,j);
     this->enMatrix.push_back(tarjeta);
-
-    cout <<"La nueva tarjeta en la matrix es"<<endl;
-
-    tarjeta.print_Tarjeta();
 
     return tarjeta;
 }
@@ -173,7 +159,9 @@ void VirtualMatrix::eliminar_tarjeta(Tarjeta tar){
 
     }
     
-    print_matrix();
+    TarjTotales -=1;
+   // print_matrix();
+
   
 }
 

@@ -32,7 +32,7 @@ Tarjeta Disck::get_tarjeta_enDisco(int i, int j){
 
     Tarjeta tarjeta = *tarj;
 
-    tarjeta.print_Tarjeta();
+    //tarjeta.print_Tarjeta();
     
     archDisck.close();
     free(buffer);

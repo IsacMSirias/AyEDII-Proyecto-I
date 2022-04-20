@@ -6,19 +6,41 @@
 
 using namespace std;
 
+
+
+/**
+ * @file Disck.cpp
+ * @author Isac Marin Sirias
+ * @brief Esta clase se encarga de manejar toda la paginacion que realiza dentro del "disco"(cuando se quema la memoria)
+ * @version 0.1
+ * @date 2022-04-19
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
+ /**
+     * @brief parametro utilizado para abrir el disco.
+     * 
+     */
+
 fstream archDisck;
-
-
-
+/**
+ * @brief constructor por defecto de la clase Disck
+ * 
+ */
 Disck::Disck(){
-
-    crear_Disco();
-
 }
 
-void Disck::crear_Disco(){
 
-}
+/**
+ * @brief Este metodo extrae la tarjeta solicitada por el cliente si es que esta se encuentra en disco.
+ * 
+ * @param i posicion i de la matriz en interfaz grafica
+ * @param j posicion j en la matriz en interfaz grafica
+ * @return objeto tarjeta
+ */
+
 Tarjeta Disck::get_tarjeta_enDisco(int i, int j){
 
     archDisck.open("disco", ios::in | ios::out | ios::binary);
@@ -42,6 +64,12 @@ Tarjeta Disck::get_tarjeta_enDisco(int i, int j){
 
 }
 
+/**
+ * @brief Este metodo agrega una un objeto tarjeta al disco.
+ * 
+ * @param i posicion i del objeto tarjeta 
+ * @param j posicion j del objeto tarjeta
+ */
 void Disck::set_tarjeta_enDisco(int i, int j, const char* image){
 
     Tarjeta tarjeta;

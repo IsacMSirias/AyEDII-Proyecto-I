@@ -8,7 +8,16 @@
 #include <bits/stdc++.h>
 #include "Tarjeta.h"
 
-
+/**
+ * @file Disck.h
+ * @author Isac Marin Sirias
+ * @brief Esta clase se encarga de manejar toda la paginacion que realiza dentro del "disco"(cuando se quema la memoria)
+ * @version 0.1
+ * @date 2022-04-19
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 
 
 class Disck {
@@ -17,7 +26,6 @@ class Disck {
 
 public:
     Disck();
-    void crear_Disco();
     Tarjeta get_tarjeta_enDisco(int i, int j);
     void set_tarjeta_enDisco(int i, int j, const char* image);
 };

@@ -1,9 +1,18 @@
 #include "VirtualMatrix.h"
 
+/**
+ * @brief Contructor que crea a la matriz
+ */
+
 VirtualMatrix::VirtualMatrix() {
     crear_Matrix(rows, cols);
 
 }
+
+/**
+ * @brief metodo que se encarga de crear el archivo en donde se almacenan todas las cartas
+ * 
+ */
 
 void VirtualMatrix::crear_Disco() {
     archDisck = fstream("disco", ios::in | ios::out | ios::binary);
@@ -13,6 +22,13 @@ void VirtualMatrix::crear_Disco() {
         archDisck = fstream("disco", ios::in | ios::out | ios::binary);
     }
 }
+
+/**
+ * @brief Crea la matriz completa de objetos tarjeta 
+ * 
+ * @param rows 
+ * @param cols 
+ */
 
 void VirtualMatrix::crear_Matrix(int rows, int cols) {
 
@@ -37,6 +53,12 @@ void VirtualMatrix::crear_Matrix(int rows, int cols) {
     archDisck.write((char*) &matrix, sizeof(Tarjeta[rows][cols]));
 }
 
+
+/**
+ * @brief realiza un random a todas las imagenes que contiene el vector de tarjetas
+ * 
+ * @return shuffle_Tarjetas devuelve el vector de chars revuelto
+ */
 vector <const char*> VirtualMatrix::s_Tarjetas() {
     vector <const char*> Tarjetas = {"N1","N2","N3","N4","N5","N6",
                                     "N1","N2","N3","N4","N5","N6",
@@ -57,6 +79,12 @@ vector <const char*> VirtualMatrix::s_Tarjetas() {
     return shuffle_Tarjetas;
 }
 
+
+
+/**
+ * @brief metodo que le hace un shuffle a la matriz en memoria 
+ * 
+ */
 void VirtualMatrix::s_Matrix() {
 
     enMatrix.clear();
@@ -72,6 +100,12 @@ void VirtualMatrix::s_Matrix() {
     //print_matrix();
 }
 
+
+/**
+ * @brief imprime la matrix en consola para poder tener un mejor manejo del flujo del codigo  
+ * 
+ */
+
 void VirtualMatrix::print_matrix(){
 
     int limit = this->enMatrix.size();
@@ -81,7 +115,10 @@ void VirtualMatrix::print_matrix(){
 
 }
 
-
+/**
+ * @brief Imprime las tarjetas que ya no se pueden usar en el juego
+ * 
+ */
 void VirtualMatrix::print_fuera_de_martix(){
 
     int limit = this->fuera_de_Matrix.size();
@@ -91,6 +128,12 @@ void VirtualMatrix::print_fuera_de_martix(){
 
 }
 
+/**
+ * @brief Busca la tarjeta solicitada en matriz, si no la encuentra en matriz, llama al metodo reempazar
+ * @param i
+ * @param j 
+ * @return reemplazar(i,j)
+ */
 
 Tarjeta VirtualMatrix::buscar_enMatrix(int i, int j) {
 
@@ -116,6 +159,13 @@ Tarjeta VirtualMatrix::buscar_enMatrix(int i, int j) {
     return reemplazar(i,j);
 }
 
+/**
+ * @brief cheeckea el disco para poder hacer un random de todas las tarjetas
+ * @param i
+ * @param j 
+ * @return tarjeta 
+ */
+
 Tarjeta VirtualMatrix::check_Disco(int i, int j) {
 
     Tarjeta tarjeta;
@@ -125,6 +175,15 @@ Tarjeta VirtualMatrix::check_Disco(int i, int j) {
 
     return tarjeta;
 }
+
+
+
+/**
+ * @brief remplaza una tarjeta al azar de la matriz por la posision i, j en disco seleccionada por el usuario
+ * @param i
+ * @param j 
+ * @return tarjeta 
+ */
 
 Tarjeta VirtualMatrix :: reemplazar(int i, int j){
 
@@ -154,6 +213,12 @@ Tarjeta VirtualMatrix :: reemplazar(int i, int j){
 }
 
 
+/**
+ * @brief Elimina una tarjeta de matrix
+ * @param i
+ * @param j 
+ */
+
 void VirtualMatrix::eliminar_tarjeta(Tarjeta tar){
 
     Disck disc;
@@ -175,6 +240,15 @@ void VirtualMatrix::eliminar_tarjeta(Tarjeta tar){
     }
      
 }
+
+/**
+ * @brief Este metodo hace varias cosas, pero para explicar si comportamiento, toma dos tarjetas y compara sus imagenes para ver 
+ * si son iguales, si son iguales elimina alguna de las dos tarjetas si es que se encuentran en memoria y la almacena en las 
+ * tarjetas que ya no se pueden usar, en el caso de que se realice el match, la matriz vuelve a hacer Shuffle.
+ * @param tar1
+ * @param tar2
+ */
+
 
 void VirtualMatrix::match(Tarjeta tar1, Tarjeta tar2){
 
@@ -227,12 +301,24 @@ void VirtualMatrix::match(Tarjeta tar1, Tarjeta tar2){
     
 }
 
+/**
+ * @brief metodo que obtiene el numero de tarjetas totales que se encuentran en memoria
+ * @return retorna el numero de tarjetas totales 
+ */
+
 int VirtualMatrix::get_tarjetas_totales(){
    
     return this->TarjTotales;
 
 }
 
+
+/**
+ * @brief metodo que indica si dos tarjetas hicieron match o no 
+ * @param tar1
+ * @param tar2
+ * @return bool que indica si se realizo o no un match 
+ */
 
 bool VirtualMatrix:: es_match(Tarjeta tar1, Tarjeta tar2){
 

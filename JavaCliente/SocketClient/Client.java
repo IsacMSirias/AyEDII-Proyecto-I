@@ -2,24 +2,44 @@ package SocketClient;
 
 import java.io.*;
 import java.net.Socket;
-import java.nio.CharBuffer;
 
 import GUI.VentanaMenu;
 
+
+/**
+ * Esta clase maneja la el flujo de datos por medio de sockets del cliente
+ */
+
 public class Client implements Runnable{
 
+      /**
+     * host por el cual se va a conectar el cliente
+     */
     String Host = "LocalHost";
+       /**
+     * Puerto por el cual se va a conectar el cliente
+     */
     int PORT = 8080;
+      /**
+     * el buffer que se recibe por parte del servidor
+     */
     BufferedReader input;
+      /**
+     * el output por donde se mandan las peticiones del cliente
+     */
     static PrintWriter output;
     
+      /**
+     * almacena los nombres de los jugadores que se le enviaran al servidor
+     */
 
     String nombreJugador1 = VentanaMenu.Jugador1;
     String nombreJugador2 = VentanaMenu.Jugador2;
-
-
-    
     public static int i_cliente;
+
+      /**
+     * metodo por el cual se inicia la conexion del cliente con el servidor
+     */
 
     public void run(){
 
@@ -42,6 +62,10 @@ public class Client implements Runnable{
 
 
     }
+
+      /**
+     * Metodo que envia las posiciones de los botones de la matriz grafica al servidor 
+     */
 
     public static void sendPosiciones(int i,int j, int i2, int j2){
 

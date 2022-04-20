@@ -1,4 +1,13 @@
-
+/**
+ * @file Servidor.cpp
+ * @author Isac Marin Sirias
+ * @brief Esta clase es la clase servidor, esta se encarga de establecer una conexion y una vez
+ * establecida se encarga de la logica de negocio de todo el juego
+ * @version 0.1
+ * @date 2022-04-19 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include <unistd.h>
 #include <stdio.h>
 #include <sys/socket.h>
@@ -9,12 +18,51 @@
 #include "VirtualMatrix.h"
 #include "VirtualMatrix.cpp"
 
+/**
+ * @brief Puerto por el cual se establece la conexion entre el cliente y el servidor
+ * 
+ */
 #define PORT 8080
+
+
+/**
+ * @brief Meotdo main, encargado de ejecutar el archivo.
+ * @return un entero meramente por formalidad, ya que el main no es un void 
+ */
+
+
 int main(int argc, char const *argv[]) {
+
+/**
+ * @brief server_fd almacena los datos del file del servidor
+ * new_socket almacena el socket del cliente, 
+ */
     int server_fd, new_socket;
+
+/**
+ * @brief Variable en la cual se almacena la IP del cliente/servidor
+ *
+ */
     struct sockaddr_in address{};
+
+    /**
+ * @brief cantidad de clinetes que se puden conectar
+ *
+ */
+
     int opt = 1;
+
+      /**
+ * @brief length del cliente 
+ *
+ */
     int addrlen = sizeof(address);
+
+
+          /**
+ * @brief buffers en los cuales se almacenan las posiciones enviadas por el cliente
+ *
+ */
 
     char pos_i [1024] = {0};
     char pos_j[1024] = {0};
@@ -22,17 +70,36 @@ int main(int argc, char const *argv[]) {
     char pos_i2[1024] = {0};
     char pos_j2[1024] = {0};
 
-
+          /**
+ * @brief buffers en los cuales se almacenan las posiciones enviadas por el cliente
+ *
+ */
     char _pos_i [1024] = {0};
     char _pos_j[1024] = {0};
 
     char _pos_i2[1024] = {0};
     char _pos_j2[1024] = {0};
 
+
+        /**
+ * @brief buffers en donde se almacenan los nombres de los jugadores
+ *
+ */
+
     char Jugador_1[1024] = {0};
     char Jugador_2[1024] = {0};
 
+       /**
+ * @brief flag que define el turno de los jugadores
+ *
+ */
+
     bool turno = true;
+
+       /**
+ * @brief flag que define el turno de los jugadores
+ *
+ */
 
     int puntos_jugador1 = 0;
     int puntos_jugador2 = 0;
@@ -67,6 +134,13 @@ int main(int argc, char const *argv[]) {
     matrix->s_Matrix();
     matrix->print_matrix();
     srand(time(0));
+
+
+           /**
+ * @brief randon que escoge el cual jugador inicia primero 
+ *
+ */
+
     int turnoran = rand()%7;
     cout<<turnoran<<endl;
 

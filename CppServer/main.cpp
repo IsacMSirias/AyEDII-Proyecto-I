@@ -1,8 +1,23 @@
+/**
+ * @file main.cpp
+ * @author Isac Marin Sirias
+ * @brief esta clase se encarga de realizar las pruebas necesarias para poder probar la paginacion.
+ * @version 0.1
+ * @date 2022-04-19 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include <iostream>
 #include "Disck.h"
 #include "VirtualMatrix.h"
 #include "VirtualMatrix.cpp"
 
+
+
+/**
+ * @brief Metodo main.
+ */
 
 int main(){
 

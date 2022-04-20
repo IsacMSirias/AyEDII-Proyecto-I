@@ -1,6 +1,20 @@
 
 #ifndef PRUEBAMATRIX_VIRTUALMATRIX_H
 #define PRUEBAMATRIX_VIRTUALMATRIX_H
+
+
+/**
+ * @file VirtualMatrix.cpp
+ * @author Isac Marin Sirias
+ * @brief Clase encargada de la administracion y manejo de memoria, junto a la clase Disck 
+ * @version 0.1
+ * @date 2022-04-19
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -17,12 +31,30 @@ using std::ios;
 
 
 class VirtualMatrix {
-
+  /**
+     * @brief numero de filas que tiene la matriz
+     * 
+     */
     int rows =  6;
+     /**
+     * @brief numero de columnas que tiene la matriz
+     * 
+     */
     int cols = 6;
+    /**
+     * @brief variable que almacena los pageHit que se realizan cada vez que una carta
+     * 
+     */
     int Hit = 0;
+    /**
+     * @brief variable que almacena los pageFould que se realizan cada vez que una carta
+     * 
+     */
     int Fault = 0;
-    int puntos = 0;
+    /**
+     * @brief numero de tarjetas totales, tanto en disco como en memoria
+     * 
+     */
     int TarjTotales = rows*cols;
     
 

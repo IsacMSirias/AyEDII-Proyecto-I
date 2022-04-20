@@ -34,7 +34,8 @@ int main(int argc, char const *argv[]) {
 
     bool turno = true;
 
-
+    int puntos_jugador1 = 0;
+    int puntos_jugador2 = 0;
     // Creating socket file descriptor
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
         perror("socket failed");
@@ -126,10 +127,35 @@ int main(int argc, char const *argv[]) {
                     matrix->match(tar1,tar2);
                     cout<<"\n";
 
+                    bool check_match = matrix->es_match(tar1, tar2);
+
+                    if(check_match ==true){
+                        puntos_jugador2 += 5;
+                    }else{
+                        puntos_jugador2 += 0;
+                    }
+
+                    cout<<"-------PUNTOS-------"<<endl;
+                    cout<<"Puntos de "<<Jugador_1<<endl;
+                    cout<<puntos_jugador1<<endl;
+                    cout<<"Puntos de "<<Jugador_2<<endl;
+                    cout<<puntos_jugador2<<endl;
+                    cout<<"--------------------"<<endl;
+                    cout<<"\n";
 
                     cout<<"Ya no se pueden usar las siguientes tarjetas"<<endl;
                     
                     matrix->print_fuera_de_martix();
+
+
+                    int enMatrix = matrix->enMatrix.size();
+                    int enDisco = matrix->get_tarjetas_totales();
+
+                    cout<<"-------CONSUMO DE MEMORIA-------"<<endl;
+                    cout<<"Tarjetas en matriz: "<<enMatrix<<endl;
+                    cout<<"Tarjetas en disco:  "<<enDisco<<endl;
+                    cout<<"---------------------------------"<<endl;
+                    cout<<"\n";
                     
                     turno = false;
 
@@ -167,10 +193,35 @@ int main(int argc, char const *argv[]) {
                     matrix->match(_tar1, _tar2);
                     cout<<"\n";
 
+                    bool _check_match = matrix->es_match(_tar1, _tar2);
+
+                    if(_check_match ==true){
+                        puntos_jugador1 += 5;
+                    }else{
+                        puntos_jugador1 += 0;
+                    }
+
+                    cout<<"-------PUNTOS-------"<<endl;
+                    cout<<"Puntos de "<<Jugador_1<<endl;
+                    cout<<puntos_jugador1<<endl;
+                    cout<<"Puntos de "<<Jugador_2<<endl;
+                    cout<<puntos_jugador2<<endl;
+                    cout<<"--------------------"<<endl;
+                    cout<<"\n";
 
                     cout<<"Ya no se pueden usar las siguientes tarjetas"<<endl;
                     
                     matrix->print_fuera_de_martix();
+
+
+                    int enMatrix = matrix->enMatrix.size();
+                    int enDisco = matrix->get_tarjetas_totales();
+
+                    cout<<"-------CONSUMO DE MEMORIA-------"<<endl;
+                    cout<<"Tarjetas en matriz: "<<enMatrix<<endl;
+                    cout<<"Tarjetas en disco:  "<<enDisco<<endl;
+                    cout<<"---------------------------------"<<endl;
+                    cout<<"\n";
 
 
                     
@@ -217,10 +268,33 @@ int main(int argc, char const *argv[]) {
                     matrix->match(tar1, tar2);
                     cout<<"\n";
 
+                     bool check_match = matrix->es_match(tar1, tar2);
+
+                    if(check_match ==true){
+                        puntos_jugador1 += 5;
+                    }else{
+                        puntos_jugador1 += 0;
+                    }
+
+                    cout<<"-------PUNTOS-------"<<endl;
+                    cout<<"Puntos de "<<Jugador_1<<endl;
+                    cout<<puntos_jugador1<<endl;
+                    cout<<"Puntos de "<<Jugador_2<<endl;
+                    cout<<puntos_jugador2<<endl;
+                    cout<<"--------------------"<<endl;
 
                     cout<<"Ya no se pueden usar las siguientes tarjetas"<<endl;
-                    
+                    cout<<"\n";
                     matrix->print_fuera_de_martix();
+
+                    int enMatrix = matrix->enMatrix.size();
+                    int enDisco = matrix->get_tarjetas_totales();
+
+                    cout<<"-------CONSUMO DE MEMORIA-------"<<endl;
+                    cout<<"Tarjetas en matriz: "<<enMatrix<<endl;
+                    cout<<"Tarjetas en disco:  "<<enDisco<<endl;
+                    cout<<"---------------------------------"<<endl;
+                    cout<<"\n";
                     
                     
                 turno = false;
@@ -256,9 +330,37 @@ int main(int argc, char const *argv[]) {
                     matrix->match(_tar1,_tar2);
                     cout<<"\n";
 
+
+                    bool check_match = matrix->es_match(_tar1, _tar2);
+
+                    if(check_match ==true){
+                        puntos_jugador2 += 5;
+                    }else{
+                        puntos_jugador2 += 0;
+                    }
+
+                    cout<<"-------PUNTOS-------"<<endl;
+                    cout<<"Puntos de "<<Jugador_1<<endl;
+                    cout<<puntos_jugador1<<endl;
+                    cout<<"Puntos de "<<Jugador_2<<endl;
+                    cout<<puntos_jugador2<<endl;
+                    cout<<"--------------------"<<endl;
+                    cout<<"\n";
+
                     cout<<"Ya no se pueden usar las siguientes tarjetas"<<endl;
                     
                     matrix->print_fuera_de_martix();
+
+
+                    int enMatrix = matrix->enMatrix.size();
+                    int enDisco = matrix->get_tarjetas_totales();
+
+                    cout<<"-------CONSUMO DE MEMORIA-------"<<endl;
+                    cout<<"Tarjetas en matriz: "<<enMatrix<<endl;
+                    cout<<"Tarjetas en disco:  "<<enDisco<<endl;
+                    cout<<"---------------------------------"<<endl;
+                    cout<<"\n";
+                    
                     
                     
                 turno = true;

@@ -22,11 +22,13 @@ class VirtualMatrix {
     int cols = 6;
     int Hit = 0;
     int Fault = 0;
+    int puntos = 0;
     int TarjTotales = rows*cols;
     
 
 
 public:
+
     vector <Tarjeta> enMatrix;
     vector <Tarjeta> fuera_de_Matrix;
     fstream archDisck;
@@ -44,10 +46,16 @@ public:
     void print_matrix();
     void print_fuera_de_martix();
     void crear_Disco();
+
+    bool es_match(Tarjeta tar1, Tarjeta tar2);
+  
     
     VirtualMatrix();
 
     vector <const char*> s_Tarjetas();
+
+    int get_tarjetas_totales();
+
 };
 
 

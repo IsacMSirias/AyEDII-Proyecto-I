@@ -14,12 +14,10 @@ public class Memory extends JFrame {
     int counter = 0;
 
 
-    //Buttons and Labels and More!
     public static MemoryButton[][] memButtons = new MemoryButton[rows][columns];
     public static JLabel[][] imgLabel = new JLabel[rows][columns];
     private static JPanel[][] memPanel = new JPanel[rows][columns];
 
-    //Math Stuff
     int[] cards = new int[columns*rows];
     int compareCards = 0;
     int holdCardRow = 0;
@@ -27,26 +25,19 @@ public class Memory extends JFrame {
     boolean isFirst = true;
     int win = 0;
 
-    /**
-     Constructor
-     Very simple, creates a 2x6 panels in grid Layout
-     */
 
     public  Memory()
     {
-        //Math
+        
+        setTitle("M e m o r y");
 
-
-        // Display a title.
-        setTitle("Memory");
-
-        // Specify an action for the close button.
+       
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //Set layout
+
         setLayout(new GridLayout(rows, columns));
 
-        // Create the memPanelsAdd items buttons to the panel
+      
         for( int i = 0; i < rows; i++)
         {
             for (int j = 0; j < columns; j++)
@@ -56,38 +47,33 @@ public class Memory extends JFrame {
             }
         }
 
-        //Pack it and show it
         pack();
         setVisible(true);
     }
 
-    /**
-     The buildMemPanel method builds the grid for the game Memory
-     */
+  
 
     public void buildMemPanel(int _i, int _j)
     {
-        //New Panel
+      
         memPanel[_i][_j] = new JPanel();
 
-        //Set Layout
+       
         memPanel[_i][_j].setLayout(new GridLayout(2,1));
 
-        //Fill with a button
         memButtons[_i][_j] = new MemoryButton(_i, _j, cards[counter], false);
         counter++;
 
-        //Add an actionListener
+        
         memButtons[_i][_j].addActionListener(new FlipListener());
-        memButtons[_i][_j].setText("xd");
+        memButtons[_i][_j].setText("voltear");
 
-        //Create the Images
-        imgLabel[_i][_j] = new JLabel( new ImageIcon("Card" + 0 + ".jpg"));
+       
+        imgLabel[_i][_j] = new JLabel( new ImageIcon("Tarjeta" + 0 + ".jpg"));
 
-        //Set up a border
+        
         memPanel[_i][_j].setBorder(BorderFactory.createTitledBorder(" "));
 
-        //Add them to the panel
         memPanel[_i][_j].add(imgLabel[_i][_j]);
         memPanel[_i][_j].add(memButtons[_i][_j]);
     }
@@ -106,10 +92,10 @@ public class Memory extends JFrame {
               
                 if( isFirst)
                 {
-                    //compareCards = memButtons[i][j].getImageNumber();
+                   
                     holdCardRow = memButtons[i][j].getRow();
                     holdCardColumn = memButtons[i][j].getColumn();
-                    //memButtons[holdCardRow][holdCardColumn].setEnabled(false);
+           
                     isFirst = false;
                 }
                 else
@@ -118,29 +104,10 @@ public class Memory extends JFrame {
                     System.out.println(holdCardRow +", "+ holdCardColumn);
                     System.out.println(i +", "+ j);
 
-                    Client.sendPosiciones(holdCardRow,holdCardColumn, i,j);
+                   Client.sendPosiciones(holdCardRow,holdCardColumn, i,j);
 
 
-                    if (compareCards == memButtons[i][j].getImageNumber())
-                    {
-                        win++;
-                        if (win == columns)
-                        {
-                            win = 0;   
-                        }
-                        else
-                        {
-            
-                            //memButtons[holdCardRow][holdCardColumn].setEnabled(false);
-                           // memButtons[i][j].setEnabled(false);
-                        }
-                    }
-                    else
-                    {
-             
-                        memButtons[holdCardRow][holdCardColumn].setEnabled(true);
-                      
-                    }
+                  
                     isFirst = true;
                 }
             } 

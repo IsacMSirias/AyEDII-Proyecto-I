@@ -216,8 +216,6 @@ void VirtualMatrix::match(Tarjeta tar1, Tarjeta tar2){
 
          }   
 
-    
-
     this->s_Matrix();
     cout<<"----Nueva Matrix en Memoria-----"<<endl;
     this->print_matrix();
@@ -228,6 +226,23 @@ void VirtualMatrix::match(Tarjeta tar1, Tarjeta tar2){
     }
     
 }
+
+int VirtualMatrix::get_tarjetas_totales(){
+   
+    return this->TarjTotales;
+
+}
+
+
+bool VirtualMatrix:: es_match(Tarjeta tar1, Tarjeta tar2){
+
+    if(tar1.image == tar2.image){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 
 
 

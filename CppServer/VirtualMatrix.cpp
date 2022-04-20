@@ -60,6 +60,7 @@ vector <const char*> VirtualMatrix::s_Tarjetas() {
 void VirtualMatrix::s_Matrix() {
 
     enMatrix.clear();
+
     srand(time(0));
     for (int i = 0; i < TarjTotales/3; i++)
     {
@@ -80,6 +81,17 @@ void VirtualMatrix::print_matrix(){
 
 }
 
+
+void VirtualMatrix::print_fuera_de_martix(){
+
+    int limit = this->fuera_de_Matrix.size();
+    for(int n = 0; n < limit ; n++){
+        this->fuera_de_Matrix[n].print_Tarjeta();
+    }
+
+}
+
+
 Tarjeta VirtualMatrix::buscar_enMatrix(int i, int j) {
 
     Disck disck;
@@ -90,15 +102,18 @@ Tarjeta VirtualMatrix::buscar_enMatrix(int i, int j) {
             {
                 Hit +=1;
                 cout << "pageHits: "<< Hit << endl;
-
+                cout<<"\n";
+                
                 return enMatrix[n];
 
             }
         }
+
     }
     Fault += 1;
     cout << "pageFaults: " << Fault << endl;
-    return disck.get_tarjeta_enDisco(i,j);
+     cout<<"\n";
+    return reemplazar(i,j);
 }
 
 Tarjeta VirtualMatrix::check_Disco(int i, int j) {
@@ -158,11 +173,60 @@ void VirtualMatrix::eliminar_tarjeta(Tarjeta tar){
         }
 
     }
-    
-    TarjTotales -=1;
-   // print_matrix();
+     
+}
 
-  
+void VirtualMatrix::match(Tarjeta tar1, Tarjeta tar2){
+
+    int total_tarjs = this->enMatrix.size();
+
+    if(tar1.image == tar2.image){
+
+        cout<<"Se encontro un par de tarjetas"<<endl;
+
+        for(int n = 0; n < total_tarjs; n++){
+
+            if(enMatrix[n].i == tar1.i){
+
+                if(enMatrix[n].j == tar1.j){
+                    
+                    this->eliminar_tarjeta(tar1);
+                    this->fuera_de_Matrix.push_back(tar1);
+                    TarjTotales -=1;
+
+                }
+            
+            }
+        }
+
+        for(int n = 0; n < total_tarjs; n++){
+
+            if(enMatrix[n].i == tar2.i){
+
+                if(enMatrix[n].j == tar2.j){
+                    
+                    this ->eliminar_tarjeta(tar2);
+                    this->fuera_de_Matrix.push_back(tar2);
+                    TarjTotales -=1;
+
+
+                }
+            
+            }
+
+         }   
+
+    
+
+    this->s_Matrix();
+    cout<<"----Nueva Matrix en Memoria-----"<<endl;
+    this->print_matrix();
+    
+    }else{
+    cout<<"No se encontro una pareja de cartas"<<endl;
+
+    }
+    
 }
 
 

@@ -17,10 +17,10 @@ int main(){
     cout<< "............................\n";
     matrix->buscar_enMatrix(5,3);
     cout<< "............................\n";
-   matrix->buscar_enMatrix(5,3);
- matrix->buscar_enMatrix(5,3);
-  matrix->buscar_enMatrix(5,3);
-   matrix->buscar_enMatrix(5,3);
+    matrix->buscar_enMatrix(5,3);
+    matrix->buscar_enMatrix(5,3);
+    matrix->buscar_enMatrix(5,3);
+    matrix->buscar_enMatrix(5,3);
 
     cout<<"el vector tiene" <<": "<<matrix->enMatrix.size()<< "  Tarjetas"<<endl;
 

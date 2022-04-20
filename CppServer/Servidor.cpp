@@ -98,7 +98,7 @@ int main(int argc, char const *argv[]) {
                     cout<<"-------------------------"<<endl;
 
                     cout<<"JUGADOR 1: "<<Jugador_2<<endl;
-
+                    cout<<"\n";
 
                     read(new_socket, pos_i, 1024);
                     read(new_socket, pos_j, 1024);
@@ -112,43 +112,34 @@ int main(int argc, char const *argv[]) {
                     int j2 = stoi(pos_j2);
 
                     cout << "primera carta: "<< i << "," <<j<< endl;
-                    cout << "primera carta: "<< i2 << "," <<j2<< endl;
+                    cout << "segunda carta: "<< i2 << "," <<j2<< endl;
+
+                    cout<<"\n";
 
                     Tarjeta tar1 = matrix->buscar_enMatrix(i,j);
 
                     Tarjeta tar2 =matrix->buscar_enMatrix(i2,j2);
 
                     cout<<"Las imagenes respectivas son: "<<tar1.image <<","<<tar2.image<<endl;
+                    cout<<"\n";
 
-                    if(tar1.image == tar2.image){
-
-                    matrix->eliminar_tarjeta(tar1);
-                    matrix->eliminar_tarjeta(tar2);
-
-                    cout<<"match"<<endl;
-
-                    cout<<"----------NUEVA MATRIZ-------------"<<endl;
-                    matrix->s_Matrix();
-                    matrix->print_matrix();
+                    matrix->match(tar1,tar2);
+                    cout<<"\n";
 
 
-                    cout<<"-------------------------"<<endl;
-
-                    }else{
-                        cout<<"No match"<<endl;
-
-
-                
-                    }
+                    cout<<"Ya no se pueden usar las siguientes tarjetas"<<endl;
                     
+                    matrix->print_fuera_de_martix();
                     
-                turno = false;
+                    turno = false;
 
 
                 }else{
 
                     cout<<"-------------------------"<<endl;
                     cout<<"JUGADOR 2: "<<Jugador_1<<endl;
+
+                    cout<<"\n";
 
                     read(new_socket, _pos_i, 1024);
                     read(new_socket, _pos_j, 1024);
@@ -163,36 +154,31 @@ int main(int argc, char const *argv[]) {
 
                     cout << "primera carta: "<< _i << "," <<_j<< endl;
                     cout << "primera carta: "<< _i2 << "," <<_j2<< endl;
+                    cout<<"\n";
 
                     Tarjeta _tar1 = matrix->buscar_enMatrix(_i,_j);
 
                     Tarjeta _tar2 =matrix->buscar_enMatrix(_i2,_j2);
+                    cout<<"\n";
 
-                    cout<<_tar1.image <<","<<_tar2.image<<endl;
+                    cout<<"Las imagenes respectivas son: "<<_tar1.image <<","<<_tar2.image<<endl;
+                    cout<<"\n";
 
-                    if(_tar1.image == _tar2.image){
+                    matrix->match(_tar1, _tar2);
+                    cout<<"\n";
 
-                    matrix->eliminar_tarjeta(_tar1);
-                    matrix->eliminar_tarjeta(_tar2);
-        
-                    cout<<"match"<<endl;
-                    matrix->s_Matrix();
-                    matrix->print_matrix();
-        
-                    cout<<"-------------------------"<<endl;
 
-                    }else{
-
-                        cout<<"No match"<<endl;
-                        cout<<"-------------------------"<<endl;
-                    }
+                    cout<<"Ya no se pueden usar las siguientes tarjetas"<<endl;
                     
+                    matrix->print_fuera_de_martix();
+
+
                     
-                turno = true;
+                    turno = true;
 
                 }
 
-        }
+             }
 
         }else{
 
@@ -204,6 +190,7 @@ int main(int argc, char const *argv[]) {
 
                     cout<<"JUGADOR 1: "<<Jugador_1<<endl;
 
+                    cout<<"\n";
 
                     read(new_socket, pos_i, 1024);
                     read(new_socket, pos_j, 1024);
@@ -218,33 +205,22 @@ int main(int argc, char const *argv[]) {
 
                     cout << "primera carta: "<< i << "," <<j<< endl;
                     cout << "primera carta: "<< i2 << "," <<j2<< endl;
+                     cout<<"\n";
 
                     Tarjeta tar1 = matrix->buscar_enMatrix(i,j);
 
                     Tarjeta tar2 =matrix->buscar_enMatrix(i2,j2);
 
                     cout<<"Las imagenes respectivas son: "<<tar1.image <<","<<tar2.image<<endl;
+                     cout<<"\n";
 
-                    if(tar1.image == tar2.image){
-
-                    matrix->eliminar_tarjeta(tar1);
-                    matrix->eliminar_tarjeta(tar2);
-
-                    cout<<"match"<<endl;
-
-                    cout<<"----------NUEVA MATRIZ-------------"<<endl;
-                    matrix->s_Matrix();
-                    matrix->print_matrix();
+                    matrix->match(tar1, tar2);
+                    cout<<"\n";
 
 
-                    cout<<"-------------------------"<<endl;
-
-                    }else{
-                        cout<<"No match"<<endl;
-
-
-                
-                    }
+                    cout<<"Ya no se pueden usar las siguientes tarjetas"<<endl;
+                    
+                    matrix->print_fuera_de_martix();
                     
                     
                 turno = false;
@@ -254,6 +230,7 @@ int main(int argc, char const *argv[]) {
 
                     cout<<"-------------------------"<<endl;
                     cout<<"JUGADOR 2: "<<Jugador_2<<endl;
+                     cout<<"\n";
 
                     read(new_socket, _pos_i, 1024);
                     read(new_socket, _pos_j, 1024);
@@ -268,39 +245,29 @@ int main(int argc, char const *argv[]) {
 
                     cout << "primera carta: "<< _i << "," <<_j<< endl;
                     cout << "primera carta: "<< _i2 << "," <<_j2<< endl;
+                     cout<<"\n";
 
                     Tarjeta _tar1 = matrix->buscar_enMatrix(_i,_j);
 
                     Tarjeta _tar2 =matrix->buscar_enMatrix(_i2,_j2);
 
-                    cout<<_tar1.image <<","<<_tar2.image<<endl;
+                    cout<<"Las imagenes respectivas son: "<<_tar1.image <<","<<_tar2.image<<endl;
 
-                    if(_tar1.image == _tar2.image){
+                    matrix->match(_tar1,_tar2);
+                    cout<<"\n";
 
-                    matrix->eliminar_tarjeta(_tar1);
-                    matrix->eliminar_tarjeta(_tar2);
-        
-                    cout<<"match"<<endl;
-                    matrix->s_Matrix();
-                    matrix->print_matrix();
-        
-                    cout<<"-------------------------"<<endl;
-
-                    }else{
-
-                        cout<<"No match"<<endl;
-                        cout<<"-------------------------"<<endl;
-                    }
+                    cout<<"Ya no se pueden usar las siguientes tarjetas"<<endl;
+                    
+                    matrix->print_fuera_de_martix();
                     
                     
                 turno = true;
 
                 }
 
-        }
+            }
 
         }       
-
        
     }
 

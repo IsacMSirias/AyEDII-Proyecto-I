@@ -144,8 +144,6 @@ Tarjeta VirtualMatrix::buscar_enMatrix(int i, int j) {
             if (enMatrix[n].j == j)
             {
                 Hit +=1;
-                cout << "pageHits: "<< Hit << endl;
-                cout<<"\n";
                 
                 return enMatrix[n];
 
@@ -154,8 +152,6 @@ Tarjeta VirtualMatrix::buscar_enMatrix(int i, int j) {
 
     }
     Fault += 1;
-    cout << "pageFaults: " << Fault << endl;
-     cout<<"\n";
     return reemplazar(i,j);
 }
 
@@ -257,6 +253,7 @@ void VirtualMatrix::match(Tarjeta tar1, Tarjeta tar2){
     if(tar1.image == tar2.image){
 
         cout<<"Se encontro un par de tarjetas"<<endl;
+        cout<<"\n";
 
         for(int n = 0; n < total_tarjs; n++){
 
@@ -296,6 +293,7 @@ void VirtualMatrix::match(Tarjeta tar1, Tarjeta tar2){
     
     }else{
     cout<<"No se encontro una pareja de cartas"<<endl;
+    cout<<"\n";
 
     }
     
@@ -311,6 +309,18 @@ int VirtualMatrix::get_tarjetas_totales(){
     return this->TarjTotales;
 
 }
+int VirtualMatrix::get_pageHits(){
+   
+    return this->Hit;
+
+}
+
+int VirtualMatrix::get_pageFaults(){
+   
+    return this->Fault;
+
+}
+
 
 
 /**

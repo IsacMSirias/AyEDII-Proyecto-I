@@ -218,16 +218,23 @@ int main(int argc, char const *argv[]) {
                     cout<<"\n";
 
                     cout<<"Ya no se pueden usar las siguientes tarjetas"<<endl;
-                    
+                    cout<<"\n";
                     matrix->print_fuera_de_martix();
-
+                    cout<<"\n";
 
                     int enMatrix = matrix->enMatrix.size();
                     int enDisco = matrix->get_tarjetas_totales();
+                    int hits = matrix->get_pageHits();
+                    int faults = matrix->get_pageFaults();
+
 
                     cout<<"-------CONSUMO DE MEMORIA-------"<<endl;
                     cout<<"Tarjetas en matriz: "<<enMatrix<<endl;
                     cout<<"Tarjetas en disco:  "<<enDisco<<endl;
+                    cout << "pageHits: "<< hits << endl;
+                    cout << "pageFaults: " << faults << endl;
+                    cout <<"Memoria en uso: " << matrix->get_mem_usage() << " bytes" << endl;
+                    cout<<"---------------------------------"<<endl;
                     cout<<"---------------------------------"<<endl;
                     cout<<"\n";
                     
@@ -253,7 +260,7 @@ int main(int argc, char const *argv[]) {
                     int _j2 = stoi(_pos_j2);
 
                     cout << "primera carta: "<< _i << "," <<_j<< endl;
-                    cout << "primera carta: "<< _i2 << "," <<_j2<< endl;
+                    cout << "segunda carta: "<< _i2 << "," <<_j2<< endl;
                     cout<<"\n";
 
                     Tarjeta _tar1 = matrix->buscar_enMatrix(_i,_j);
@@ -284,16 +291,22 @@ int main(int argc, char const *argv[]) {
                     cout<<"\n";
 
                     cout<<"Ya no se pueden usar las siguientes tarjetas"<<endl;
-                    
+                    cout<<"\n";
                     matrix->print_fuera_de_martix();
-
+                    cout<<"\n";
 
                     int enMatrix = matrix->enMatrix.size();
                     int enDisco = matrix->get_tarjetas_totales();
+                    int hits = matrix->get_pageHits();
+                    int faults = matrix->get_pageFaults();
 
                     cout<<"-------CONSUMO DE MEMORIA-------"<<endl;
                     cout<<"Tarjetas en matriz: "<<enMatrix<<endl;
                     cout<<"Tarjetas en disco:  "<<enDisco<<endl;
+                    cout << "pageHits: "<< hits << endl;
+                    cout << "pageFaults: " << faults << endl;
+                    cout <<"Memoria en uso: " << matrix->get_mem_usage() << " bytes" << endl;
+                    cout<<"---------------------------------"<<endl;
                     cout<<"---------------------------------"<<endl;
                     cout<<"\n";
 
@@ -329,7 +342,7 @@ int main(int argc, char const *argv[]) {
                     int j2 = stoi(pos_j2);
 
                     cout << "primera carta: "<< i << "," <<j<< endl;
-                    cout << "primera carta: "<< i2 << "," <<j2<< endl;
+                    cout << "segunda carta: "<< i2 << "," <<j2<< endl;
                      cout<<"\n";
 
                     Tarjeta tar1 = matrix->buscar_enMatrix(i,j);
@@ -360,13 +373,21 @@ int main(int argc, char const *argv[]) {
                     cout<<"Ya no se pueden usar las siguientes tarjetas"<<endl;
                     cout<<"\n";
                     matrix->print_fuera_de_martix();
+                    cout<<"\n";
+
 
                     int enMatrix = matrix->enMatrix.size();
                     int enDisco = matrix->get_tarjetas_totales();
+                    int hits = matrix->get_pageHits();
+                    int faults = matrix->get_pageFaults();
 
                     cout<<"-------CONSUMO DE MEMORIA-------"<<endl;
                     cout<<"Tarjetas en matriz: "<<enMatrix<<endl;
                     cout<<"Tarjetas en disco:  "<<enDisco<<endl;
+                    cout << "pageHits: "<< hits<< endl;
+                    cout << "pageFaults: " << faults << endl;
+                    cout << "Memoria en uso: " << matrix->get_mem_usage() << " bytes" << endl;
+                    cout<<"---------------------------------"<<endl;
                     cout<<"---------------------------------"<<endl;
                     cout<<"\n";
                     
@@ -392,7 +413,7 @@ int main(int argc, char const *argv[]) {
                     int _j2 = stoi(_pos_j2);
 
                     cout << "primera carta: "<< _i << "," <<_j<< endl;
-                    cout << "primera carta: "<< _i2 << "," <<_j2<< endl;
+                    cout << "segunda carta: "<< _i2 << "," <<_j2<< endl;
                      cout<<"\n";
 
                     Tarjeta _tar1 = matrix->buscar_enMatrix(_i,_j);
@@ -424,14 +445,20 @@ int main(int argc, char const *argv[]) {
                     cout<<"Ya no se pueden usar las siguientes tarjetas"<<endl;
                     
                     matrix->print_fuera_de_martix();
-
+                    cout<<"\n";
 
                     int enMatrix = matrix->enMatrix.size();
                     int enDisco = matrix->get_tarjetas_totales();
+                    int hits = matrix->get_pageHits();
+                    int faults = matrix->get_pageFaults();
 
                     cout<<"-------CONSUMO DE MEMORIA-------"<<endl;
                     cout<<"Tarjetas en matriz: "<<enMatrix<<endl;
                     cout<<"Tarjetas en disco:  "<<enDisco<<endl;
+                    cout << "pageHits: "<< hits << endl;
+                    cout << "pageFaults: " << faults << endl;
+                    cout << "Memoria en uso: " << matrix->get_mem_usage() << " bytes" << endl;
+                    cout<<"---------------------------------"<<endl;
                     cout<<"---------------------------------"<<endl;
                     cout<<"\n";
                     

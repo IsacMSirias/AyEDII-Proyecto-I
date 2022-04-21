@@ -19,6 +19,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <sys/resource.h>
 #include "Tarjeta.h"
 #include "Disck.h"
 #include "Disck.cpp"
@@ -61,6 +62,13 @@ class VirtualMatrix {
 
 public:
 
+long get_mem_usage() {
+    struct rusage myusage;
+
+    getrusage(RUSAGE_SELF, &myusage);
+    return myusage.ru_maxrss;
+}
+
     vector <Tarjeta> enMatrix;
     vector <Tarjeta> fuera_de_Matrix;
     fstream archDisck;
@@ -88,6 +96,8 @@ public:
 
     int get_tarjetas_totales();
 
+    int get_pageHits();
+    int get_pageFaults();
 };
 
 
